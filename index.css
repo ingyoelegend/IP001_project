@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700;800&display=swap");
+@import "reset.css";
+@import "variables.css";
+
+body {
+  font-family: "Nanum Gothic", sans-serif;
+  height: 500vh;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  width: 100%;
+
+  min-width: 1000px;
+}
+
+#logo {
+  display: flex;
+  width: 20%;
+
+  justify-content: center;
+}
+
+#profile {
+  display: flex;
+  width: 20%;
+
+  justify-content: center;
+}
+
+#profile a {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+#search {
+  display: flex;
+  width: 60%;
+
+  justify-content: center;
+}
+
+#search_input {
+  border-radius: 50px;
+  width: 70%;
+  height: 30px;
+  border: 3px solid skyblue;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.nav_item {
+  text-decoration: none;
+  color: black;
+  margin: 0px 0px 20px 20px;
+}
+
+.nav_item:hover {
+  text-decoration: underline;
+}
+
+#nav_list {
+  min-width: 1000px;
+  display: flex;
+  justify-content: center;
+}
+
+#content {
+  display: flex;
+  justify-content: center;
+  min-width: 1000px;
+}
