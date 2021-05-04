@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "user.UserController" %>
+<%@ page import = "java.io.PrintWriter" %>
 <!DOCTYPE html>
 <html>
   <head>
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <meta name="viewport" content="width=device-width"/>
     <title>영기PC</title>
     <link rel="stylesheet" href="css/index.css" />
@@ -19,8 +21,19 @@
  	 <div id="dropdown">
      	<i class="far fa-user fa-lg"></i> 
       	<div id="dropdown-content">
-        	<a href = "login.jsp">로그인</a>
-       	    <a href = "join.jsp">회원가입</a>
+      	<%
+      	if(session.getAttribute("userID") == null)
+      	{
+      		out.println("<a href = 'login.jsp'>로그인</a>");
+      		out.println("<a href = '.jsp'>회원가입</a>");  	  
+      	}
+      	else
+      	{
+      		out.println("<a href = 'logoutController.jsp'>로그아웃</a>");
+      		out.println("<a href = '.jsp'>회원가입</a>");  	  
+      	}
+      	%>
+        	
         </div>
      </div>
     

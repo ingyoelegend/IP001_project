@@ -1,7 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
-     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <meta name="viewport" content="width=device-width" />
     <title>영기PC</title>
     <link rel="stylesheet" href="css/login.css" />
@@ -15,9 +15,9 @@
       </p>
     </header>
 
-    <form action="home.html" id="login-form" method="post">
-      <input type="email" placeholder="이메일" id = "id" />
-      <input type="password" placeholder="비밀번호" id = "pwd"/>
+    <form action="loginPost.jsp" id="login-form" method="post">
+      <input type="email" placeholder="이메일" id = "id" name = "userID" />
+      <input type="password" placeholder="비밀번호" id = "pwd" name = "userPassword"/>
       <input type="submit" value="로그인" />
       <a href="join.jsp">회원가입</a>
     </form>
