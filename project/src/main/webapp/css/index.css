@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700;800&display=swap");
 @import "reset.css";
 @import "variables.css";
+@import "bootstrap.css";
 
 body {
   font-family: "Nanum Gothic", sans-serif;
@@ -24,17 +25,42 @@ body {
   justify-content: center;
 }
 
-#profile {
+#dropdown {
   display: flex;
   width: 20%;
-
   justify-content: center;
+  position:relative;
 }
 
-#profile a {
-  text-align: center;
-  text-decoration: none;
-  color: black;
+#dropdown-content
+{
+	display: none;
+   
+    background-color: #f9f9f9;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    
+    position:absolute;
+    bottom:-82px;
+}
+
+
+#dropdown-content a {
+ 	color: black;
+    text-decoration: none;
+    display: block;
+    padding: 12px 16px;
+  
+  
+}
+
+#dropdown-content a:hover {
+ 
+  background-color: #f1f1f1
+}
+
+#dropdown:hover #dropdown-content {
+    display: block;
 }
 
 #search {

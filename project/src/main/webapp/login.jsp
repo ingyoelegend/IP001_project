@@ -19,12 +19,13 @@
       <input type="email" placeholder="이메일" id = "id" />
       <input type="password" placeholder="비밀번호" id = "pwd"/>
       <input type="submit" value="로그인" />
-      <a href="join.jsp">회원가입</a>
+      <a href="join.jsp">회원가입</a>
     </form>
 
     <script
       src="https://kit.fontawesome.com/d19eaaab15.js"
       crossorigin="anonymous"
     ></script>
+    <script src = "js/bootstrap.js"></script>
   </body>
 </html>
