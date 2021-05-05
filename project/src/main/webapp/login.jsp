@@ -8,6 +8,12 @@
   </head>
 
   <body>
+  <%
+  if(session.getAttribute("userID") != null)
+  {
+	  response.sendRedirect("index.jsp");
+  }
+  %>
     <header class="welcome-header">
       <h1 class="welcome-header__title">로그인 하여 영기PC를 이용하세요.</h1>
       <p class="welcome-header__text">
