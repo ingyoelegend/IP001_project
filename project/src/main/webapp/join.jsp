@@ -15,18 +15,22 @@
       </p>
     </header>
 
-    <form action="home.html" id="login-form" method="post">
-      <input type="email" placeholder="이름" id="name" />
-      <input type="text" placeholder="이메일" id = "id"/>
-      <input type="password" placeholder="비밀번호" id = "pwd" />
-      <input type="password" placeholder="비밀번호 재확인" id = "pwd2"/>
-      <input type="text" placeholder="주소" id = "address"/>
-      <input type="submit" value="회원가입" />
+    <form action="joinPost.jsp" id="login-form" method="post">
+      <input type="text" placeholder="이름" id="name" name = "userName" />
+      <input type="email" placeholder="이메일" id = "id" name = "userID"/>
+      <input type="password" placeholder="비밀번호" id = "pwd" name = "userPassword"/>
+      <input type="password" placeholder="비밀번호 재확인" id = "pwd2" name = "userPassword2"/>
+      <input type="text" placeholder="주소" id = "address" name = "userAddress"/>
+      <input type="submit" value="회원가입" id = "submit" />
     </form>
 
     <script
       src="https://kit.fontawesome.com/d19eaaab15.js"
       crossorigin="anonymous"
     ></script>
+    
+   <script type = "text/javascript" src="Javascript/join.js" charset="utf-8"></script>
+         
+
   </body>
 </html>
