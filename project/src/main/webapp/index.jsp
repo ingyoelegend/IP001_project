@@ -22,7 +22,10 @@
 
 
  	 <div id="dropdown">
-     	<i class="far fa-user fa-lg"></i> 
+ 	   <div id = "dropdown_icon"> <i class="far fa-user fa-lg"></i> 
+ 	  
+ 	   
+     	
       	<div id="dropdown-content">
       	<%
       	if(session.getAttribute("userID") == null)
@@ -38,6 +41,7 @@
       	%>
         	
         </div>
+       </div>
      </div>
     
     </header>
@@ -55,12 +59,20 @@
       </div>
     </main>
     <br />
-    <div id="content">내용물</div>
+    
+    <div id = "content_wrap">
+      <div id="content">
+
+        
+        
+       
+      </div>
+    </div>
 
     <script
       src="https://kit.fontawesome.com/d19eaaab15.js"
       crossorigin="anonymous"
     ></script>
-    
+  
   </body>
 </html>
