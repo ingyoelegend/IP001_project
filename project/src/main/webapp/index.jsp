@@ -13,8 +13,11 @@
     <header id="header">
       <a id="logo" href="index.jsp"><img src="resource/logo.PNG" alt="" /></a>
       <form id="search" action="search.html" method="post">
+        
         <input type="text" id="search_input" />
         <input type="submit" id="submit" value = "검색" />
+    
+                        
       </form>
 
 
@@ -47,7 +50,7 @@
         <a href="" class="nav_item">헤드폰</a>
         <a href="" class="nav_item">모니터</a>
         <a href="board.jsp" class="nav_item">게시판</a>
-        <a href="board.jsp" class="nav_item">상품등록</a>
+      
      
       </div>
     </main>
