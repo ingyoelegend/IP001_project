@@ -34,7 +34,7 @@ public class UserController {
 	
 		try
 		{
-			pstmt = conn.prepareStatement(SQL);
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			rs = pstmt.executeQuery();
 			
@@ -66,7 +66,7 @@ public class UserController {
 	
 		try
 		{
-			pstmt = conn.prepareStatement(SQL);
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserID());
 			pstmt.setString(2, user.getUserPassword());
 			pstmt.setString(3, user.getUserName());

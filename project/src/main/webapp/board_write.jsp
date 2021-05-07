@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import = "user.UserController" %>
+<%@ page import = "board.BoardController" %>
 <%@ page import = "java.io.PrintWriter" %>
+<%
+request.setCharacterEncoding("UTF-8");
+%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,6 +15,19 @@
 
   <body>
   
+   <%
+ 	 if(session.getAttribute("userID") == null)
+ 	 {
+ 		 
+ 	  PrintWriter script = response.getWriter();
+	  script.println("<script>");
+  	  script.println("alert('로그인 후에 이용해주세요.')");
+  	  script.println("</script>");
+  	  
+	  response.sendRedirect("login.jsp");
+	  
+ 	 }
+  %>
   
    <div id="header_wrap">
     <div id="header">
@@ -70,14 +87,14 @@
   <div id = "content_wrap">
     <div id="content">
 
-       <form id="write_form" action="board_write_Post.html" method="post">
+       <form id="write_form" action="board_write_Post.jsp" method="post">
       
       
        <div id="title">
            <span>제목</span>
        <br>
        <br>
-       	    <input type="text" placeholder = "제목을 입력해 주세요."  maxlength = "20" />
+       	    <input type="text" placeholder = "제목을 입력해 주세요."  maxlength = "40" name = "boardTitle" />
        	     <br>
        	      <br>
        </div>
@@ -86,13 +103,15 @@
       <span>내용</span>
        <br>
        <br>
-       	    <textarea placeholder = "내용을 입력해 주세요."></textarea>
+       	    <textarea placeholder = "내용을 입력해 주세요." name = "boardText"></textarea>
+       	    <div id = "write_submit_wrap"> <input type="submit" id="write_submit" value = "작성완료" />  </div>
+       	  
      
       </div>
        
        
    
-                        
+                  
        </form>
         
        

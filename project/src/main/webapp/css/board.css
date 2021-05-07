@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700;800&display=swap");
+
 @import "reset.css";
 @import "variables.css";
 @import "index.css";
@@ -27,6 +27,8 @@
 .content_list_code .content_list_date
 {
 	width:10%;
+	white-space: nowrap; 
+	text-overflow:ellipsis;
 	
 }
 
@@ -35,6 +37,8 @@
 	width:30%;
 	display:flex;
 	justify-content:center;
+	white-space: nowrap; 
+	text-overflow:ellipsis;
 
 }
 

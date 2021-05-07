@@ -8,12 +8,14 @@
 	border:3px solid skyblue;
 	border-radius:30px;
 	padding:20px;
+    display:block;
 }
 
 
 #text textarea:focus
 {
 	outline:none;
+	
 }
 
 
@@ -30,3 +32,19 @@
 {
 	display:block;
 }
+
+#write_submit
+{
+
+	border:3px solid skyblue;
+	
+	
+}
+
+#write_submit_wrap
+{
+	display:flex;
+	justify-content:flex-end;
+	
+}
+
