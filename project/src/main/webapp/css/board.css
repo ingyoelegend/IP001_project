@@ -3,17 +3,6 @@
 @import "variables.css";
 @import "index.css";
 
-#content_wrap
-{
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  
-
-  min-width: 1000px;
-}
 
 #content
 {
@@ -25,11 +14,11 @@
 
 .content_list {
   width:1000px;
-  background-color: skyblue;
+  background-color: rgba(0,0,0,0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border:2px solid #48b4e0;
+  border:2px solid skyblue;
   border-radius:30px;
   padding:10px;
   margin-bottom:10px;
@@ -47,6 +36,27 @@
 	display:flex;
 	justify-content:center;
 
+}
+
+#write
+{
+	background-color:rgba(0,0,0,0.2);
+	border-radius:50%;
+	position:fixed;
+	bottom:20px;
+	right:20px;
+	padding:20px;
+}
+
+#write a
+{
+	color:black;
+	
+}
+
+#nav_list a:last-child
+{
+	background-color:rgba(0,0,0,0.2)
 }
 
 
