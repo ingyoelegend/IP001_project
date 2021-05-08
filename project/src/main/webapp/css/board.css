@@ -24,35 +24,37 @@
   margin-bottom:10px;
 }
 
-.content_list_code .content_list_date
+.content_list_code, .content_list_date
 {
-	width:10%;
+	width:20%;
+	display:block;
+	text-align:center;
 	white-space: nowrap; 
+	overflow:hidden;
 	text-overflow:ellipsis;
+	
 	
 }
 
-.content_list_title .content_list_writer
+.content_list_title, .content_list_writer
 {
 	width:30%;
-	display:flex;
-	justify-content:center;
+	display:block;
+	text-align:center;
 	white-space: nowrap; 
+	overflow:hidden;
 	text-overflow:ellipsis;
 
 }
 
-#write
+.icon
 {
 	background-color:rgba(0,0,0,0.2);
-	border-radius:50%;
-	position:fixed;
-	bottom:20px;
-	right:20px;
+	border-radius:50%;	
 	padding:20px;
 }
 
-#write a
+.icon a
 {
 	color:black;
 	
@@ -63,6 +65,19 @@
 	background-color:rgba(0,0,0,0.2)
 }
 
+#page
+{
+	position:fixed;
+	bottom:20px;
+	left:20px;
+}
+
+#write
+{
+	position:fixed;
+	bottom:20px;
+	right:20px;
+}
 
 
 

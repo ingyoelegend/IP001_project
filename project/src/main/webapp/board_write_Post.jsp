@@ -17,8 +17,7 @@ request.setCharacterEncoding("UTF-8");
 <body>
  <%
           BoardController bd = new BoardController();
- 
-          int result = bd.write(board.getBoardTitle(), (String)session.getAttribute("userID"), board.getBoardText());
+
           
           if(board.getBoardTitle() == null || board.getBoardText() == null)
           {
@@ -28,7 +27,10 @@ request.setCharacterEncoding("UTF-8");
               script.println("history.back()");
           	  script.println("</script>");
           }
-          else if(result == -1)
+          
+          int result = bd.write(board.getBoardTitle(), (String)session.getAttribute("userID"), board.getBoardText());
+          
+          if(result == -1)
           {
          	 PrintWriter script = response.getWriter();
          	 script.println("<script>");
