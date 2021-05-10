@@ -103,7 +103,7 @@ request.setCharacterEncoding("UTF-8");
       <span>내용</span>
        <br>
        <br>
-       	    <textarea placeholder = "내용을 입력해 주세요." name = "boardText"></textarea>
+       	    <textarea placeholder = "내용을 입력해 주세요." name = "boardText" maxlength = "2048"></textarea>
        	    <div id = "write_submit_wrap"> <input type="submit" id="write_submit" value = "작성완료" />  </div>
        	  
      
