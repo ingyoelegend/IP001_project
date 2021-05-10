@@ -143,5 +143,35 @@ public class BoardController {
 		return false;
 		
 	}
+	
+	public Board getBoardDetail(int boardID)
+	{
+		String SQL = "SELECT boardTitle, boardText FROM Board WHERE boardID = ?";
+		Board tmp = new Board();
+	
+		try
+		{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, boardID);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				
+				
+				tmp.setBoardTitle(rs.getString(1));
+				tmp.setBoardText(rs.getString(2));
+				
+				
+			}
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+			return tmp; //error
+	}
 
 }
