@@ -53,12 +53,12 @@
       	if(session.getAttribute("userID") == null)
       	{
       		out.println("<a href = 'login.jsp'>로그인</a>");
-      		out.println("<a href = '.jsp'>회원가입</a>");  	  
+      		out.println("<a href = 'join.jsp'>회원가입</a>");  	  
       	}
       	else
       	{
       		out.println("<a href = 'logoutController.jsp'>로그아웃</a>");
-      		out.println("<a href = '.jsp'>회원가입</a>");  	  
+      		out.println("<a href = 'join.jsp'>회원가입</a>");  	  
       	}
       	
       	%>

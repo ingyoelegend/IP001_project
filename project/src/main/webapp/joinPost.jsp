@@ -48,6 +48,9 @@ else
      	 script.println("alert('회원가입이 완료되었습니다. 로그인 후에 이용해주세요.')");
        	 script.println("location.href = 'login.jsp'");
      	 script.println("</script>");
+     	 
+     	session.invalidate();
+     	response.sendRedirect("login.jsp");
 	 }
 	 
 }

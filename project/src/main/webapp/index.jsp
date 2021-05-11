@@ -34,12 +34,12 @@
       	if(session.getAttribute("userID") == null)
       	{
       		out.println("<a href = 'login.jsp'>로그인</a>");
-      		out.println("<a href = '.jsp'>회원가입</a>");  	  
+      		out.println("<a href = 'join.jsp'>회원가입</a>");  	  
       	}
       	else
       	{
       		out.println("<a href = 'logoutController.jsp'>로그아웃</a>");
-      		out.println("<a href = '.jsp'>회원가입</a>");  	  
+      		out.println("<a href = 'join.jsp'>회원가입</a>");  	  
       	}
       	
       	%>
@@ -59,6 +59,21 @@
         <a href="" class="nav_item">헤드폰</a>
         <a href="" class="nav_item">모니터</a>
         <a href="board.jsp" class="nav_item">게시판</a>
+        <%
+        UserController us = new UserController();
+        
+        if(us.getOpCode((String)session.getAttribute("userID")) == 1)
+        {
+        	
+        %>
+        
+        <a href="master.jsp" class="nav_item">관리자 페이지</a>
+        
+        <%
+        
+        }
+       
+        %>
       
      
       </div>

@@ -84,5 +84,35 @@ public class UserController {
 			return -1; //error
 	}
 	
+	public int getOpCode(String userID)
+	{
+		String SQL = "SELECT opCode FROM USER WHERE userID = ?";
+		int result = -1;
+		
+		try
+		{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				result = rs.getInt(1);
+				
+				return result;
+			}
+			
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return result;
+			
+	}
+	
 	
 }
