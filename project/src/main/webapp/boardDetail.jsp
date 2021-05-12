@@ -15,19 +15,16 @@
   <body>
   
  <%
- 	 if(session.getAttribute("userID") == null)
- 	 {
- 		 
- 	  PrintWriter script = response.getWriter();
-	  script.println("<script>");
-  	  script.println("alert('로그인 후에 이용해주세요.')");
-  	  script.println("</script>");
-  	  
-	  response.sendRedirect("login.jsp");
-	  
- 	 }
- 
- 
+ if(session.getAttribute("userID") == null)
+	{
+		 PrintWriter script = response.getWriter();
+	
+	 script.println("<script>");
+	 script.println("alert('로그인 후에 이용해주세요.')");
+	 script.println("history.back()");
+	 script.println("</script>");
+	
+	}
   %>
   
   

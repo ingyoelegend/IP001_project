@@ -2,7 +2,10 @@ package item;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import user.User;
 
 public class ItemController {
 	
@@ -24,6 +27,54 @@ public class ItemController {
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public int getNext()
+	{
+		String SQL = "SELECT boardID FROM Item ORDER BY itemID DESC";
+		try
+		{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+			{
+				return rs.getInt(1)+1;
+			}
+			return 1;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return -1;
+		
+	}
+	
+	public int upload(Item it)
+	{
+		String SQL = "INSERT INTO USER VALUES (?,?,?,?,0)";
+	
+		try
+		{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext());
+			pstmt.setString(2, it.getItemTitle());
+			pstmt.setString(3, it.getItemText());
+			pstmt.setString(4, it.getItemImage());
+			pstmt.setInt(5, it.getItemCount());
+			pstmt.setInt(6, it.getItemPrice());
+			pstmt.setString(7, it.getItemImageReal());
+			return pstmt.executeUpdate();
+			
+		
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+			return -1; //error
 	}
 
 }

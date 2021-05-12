@@ -163,7 +163,7 @@
         
  
        
-        <form id="board_search" action="boardPost.jsp" method="post">
+        <form id="board_search" action="board_search.jsp" method="post">
         
         <input type="text" id="board_search_input" name = "board_search" maxlength = "40" />
         <input type="submit" id="board_submit" value = "검색" />
