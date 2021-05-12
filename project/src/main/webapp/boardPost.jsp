@@ -4,6 +4,12 @@
 <%@ page import = "board.Board" %>
 <%@ page import = "java.io.PrintWriter" %>
 <%@ page import = "java.util.ArrayList" %>
+
+
+<%
+request.setCharacterEncoding("UTF-8");
+%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -86,21 +92,6 @@
         <a href="" class="nav_item">헤드폰</a>
         <a href="" class="nav_item">모니터</a>
         <a href="board.jsp" class="nav_item">게시판</a>
-        <%
-        UserController us = new UserController();
-        
-        if(us.getOpCode((String)session.getAttribute("userID")) == 1)
-        {
-        	
-        %>
-        
-        <a href="master.jsp" class="nav_item">관리자 페이지</a>
-        
-        <%
-        
-        }
-       
-        %>
 
 
       </div>
@@ -131,7 +122,10 @@
         
         <%
         BoardController tmp = new BoardController();
-        ArrayList<Board> list = tmp.getBoardList(pageNumber);
+        String search = (String)request.getParameter("board_search");
+        ArrayList<Board> list = tmp.getSearchBoardList(pageNumber,search);
+        
+     
         
         for(int i = 0; i < list.size(); i++)
         {
@@ -161,13 +155,14 @@
         }
         %>
         
- 
+        
        
-        <form id="board_search" action="boardPost.jsp" method="post">
+        <form id="board_search" action="board_search.jsp" method="post">
         
         <input type="text" id="board_search_input" name = "board_search" maxlength = "40" />
         <input type="submit" id="board_submit" value = "검색" />
     
+                        
         </form>
        
       </div>

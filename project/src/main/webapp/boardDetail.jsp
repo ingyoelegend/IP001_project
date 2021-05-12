@@ -80,6 +80,21 @@
         <a href="" class="nav_item">헤드폰</a>
         <a href="" class="nav_item">모니터</a>
         <a href="board.jsp" class="nav_item">게시판</a>
+        <%
+        UserController us = new UserController();
+        
+        if(us.getOpCode((String)session.getAttribute("userID")) == 1)
+        {
+        	
+        %>
+        
+        <a href="master.jsp" class="nav_item">관리자 페이지</a>
+        
+        <%
+        
+        }
+       
+        %>
 
 
       </div>

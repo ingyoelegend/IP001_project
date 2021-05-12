@@ -121,6 +121,47 @@ public class BoardController {
 		
 	}
 	
+	public ArrayList<Board> getSearchBoardList(int pageNumber,String search)
+	{
+		String SQL = "SELECT * FROM Board WHERE boardID < ? AND boardTitle LIKE ?";
+		String input = "%"+search+"%";
+		ArrayList<Board> search_list = new ArrayList<Board>();
+		try
+		{
+		
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
+			pstmt.setString(2,input);
+			
+			
+			
+			rs = pstmt.executeQuery();
+			while(rs.next())
+			{
+				Board tmp = new Board();
+				tmp.setBoardID(rs.getInt(1));
+				tmp.setBoardTitle(rs.getString(2));
+				tmp.setBoardText(rs.getString(3));
+				tmp.setBoardWriter(rs.getString(4));
+				tmp.setBoardDate(rs.getString(5));
+				search_list.add(tmp);
+				
+				
+			}
+			
+			
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return search_list;
+		
+	}
+	
 	public boolean nextPage(int pageNumber)
 	{
 		String SQL = "SELECT * FROM Board WHERE boardID < ?";
