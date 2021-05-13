@@ -24,7 +24,7 @@ request.setCharacterEncoding("UTF-8");
         	
         	 script.println("<script>");
         	 script.println("alert('로그인 후에 이용해주세요.')");
-        	 script.println("history.back()");
+        	 script.println("location.href = 'index.jsp'");
         	 script.println("</script>");
         	
     	}
@@ -35,7 +35,7 @@ request.setCharacterEncoding("UTF-8");
         	
         	 script.println("<script>");
         	 script.println("alert('관리자 권한을 보유하고 있지 않습니다.')");
-        	 script.println("history.back()");
+        	 script.println("location.href = 'index.jsp'");
         	 script.println("</script>");
         	
         }
@@ -44,7 +44,7 @@ request.setCharacterEncoding("UTF-8");
  
 
 
-       <form id="write_form" action="uploadItemPost.jsp" method="post">
+       <form id="write_form" action="uploadItemPost.jsp" enctype="multipart/form-data" method="post">
       
                    <div id = "content_wrap">
     <div id="content">
@@ -52,7 +52,7 @@ request.setCharacterEncoding("UTF-8");
            <span>상품 이미지</span>
        <br>
        <br>
-       	    <input type="file" name = "itemImage" accept = "image/*" />
+       	    <input type="file" name = "itemImage" accept = "image/*" required/>
        	     <br>
        	      <br>
        </div>
@@ -61,7 +61,7 @@ request.setCharacterEncoding("UTF-8");
            <span>상품명</span>
        <br>
        <br>
-       	    <input type="text" placeholder = "상품명."  maxlength = "40" name = "itemTitle" />
+       	    <input type="text" placeholder = "상품명."  maxlength = "40" name = "itemTitle" required/>
        	     <br>
        	      <br>
        </div>
@@ -70,7 +70,7 @@ request.setCharacterEncoding("UTF-8");
       <span>소개글</span>
        <br>
        <br>
-       	    <textarea placeholder = "소개글을 입력해 주세요." name = "boardText" maxlength = "2048"></textarea>
+       	    <textarea placeholder = "소개글을 입력해 주세요." name = "itemText" maxlength = "2048" required></textarea>
        	    </div>
        	  
      
@@ -80,7 +80,7 @@ request.setCharacterEncoding("UTF-8");
            <span>상품 개수</span>
        <br>
        <br>
-       	    <input type="number" placeholder = "상품개수" name = "itemCount" />
+       	    <input type="number" placeholder = "상품개수" name = "itemCount" required/>
        	     <br>
        	      <br>
        </div>
@@ -89,7 +89,7 @@ request.setCharacterEncoding("UTF-8");
            <span>상품 가격</span>
        <br>
        <br>
-       	    <input type="number" placeholder = "화폐 단위는(원)입니다" name = "itemPrice" />
+       	    <input type="number" placeholder = "화폐 단위는(원)입니다" name = "itemPrice" required />
        	    <div id = "write_submit_wrap"> <input type="submit" id="write_submit" value = "상품 등록" /> 
        	     <br>
        	      <br>

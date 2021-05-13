@@ -25,7 +25,7 @@ if(user.getUserID() == null ||user.getUserPassword() == null ||user.getUserName(
 	 PrintWriter script = response.getWriter();
  	 script.println("<script>");
  	 script.println("alert('입력이 안된 정보가 있습니다. 다시 입력해주세요.')");
-   	 script.println("history.back()");
+   	 script.println("location.href = 'join.jsp'");
  	 script.println("</script>");
 }
 else
@@ -38,7 +38,7 @@ else
 		 PrintWriter script = response.getWriter();
      	 script.println("<script>");
      	 script.println("alert('이미 존재하는 이메일 입니다.')");
-       	 script.println("history.back()");
+       	 script.println("location.href = 'login.jsp'");
      	 script.println("</script>");
 	 }
 	 else

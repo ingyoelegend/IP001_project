@@ -31,7 +31,7 @@ public class ItemController {
 	
 	public int getNext()
 	{
-		String SQL = "SELECT boardID FROM Item ORDER BY itemID DESC";
+		String SQL = "SELECT itemID FROM Item ORDER BY itemID DESC";
 		try
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -52,7 +52,7 @@ public class ItemController {
 	
 	public int upload(Item it)
 	{
-		String SQL = "INSERT INTO USER VALUES (?,?,?,?,0)";
+		String SQL = "INSERT INTO Item VALUES (?,?,?,?,?,?,?)";
 	
 		try
 		{
@@ -64,10 +64,7 @@ public class ItemController {
 			pstmt.setInt(5, it.getItemCount());
 			pstmt.setInt(6, it.getItemPrice());
 			pstmt.setString(7, it.getItemImageReal());
-			return pstmt.executeUpdate();
-			
-		
-			
+			return pstmt.executeUpdate();	
 			
 		}
 		catch(Exception e)

@@ -21,7 +21,7 @@
         	
         	 script.println("<script>");
         	 script.println("alert('로그인 후에 이용해주세요.')");
-        	 script.println("history.back()");
+        	 script.println("location.href = 'login.jsp'");
         	 script.println("</script>");
         	
     	}
@@ -32,7 +32,7 @@
         	
         	 script.println("<script>");
         	 script.println("alert('관리자 권한을 보유하고 있지 않습니다.')");
-        	 script.println("history.back()");
+        	 script.println("location.href = 'index.jsp'");
         	 script.println("</script>");
         	
         }

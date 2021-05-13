@@ -23,7 +23,7 @@ request.setCharacterEncoding("UTF-8");
 	
 	 script.println("<script>");
 	 script.println("alert('로그인 후에 이용해주세요.')");
-	 script.println("history.back()");
+	 script.println("location.href = 'login.jsp'");
 	 script.println("</script>");
 	
 	}
@@ -34,8 +34,8 @@ request.setCharacterEncoding("UTF-8");
       <a id="logo" href="index.jsp"><img src="resource/logo.PNG" alt="" /></a>
       <form id="search" action="search.html" method="post">
         
-        <input type="text" id="search_input" />
-        <input type="submit" id="submit" value = "검색" />
+        <input type="text" id="search_input" required/>
+        <input type="submit" id="submit" value = "검색" required/>
     
                         
       </form>

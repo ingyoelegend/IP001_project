@@ -24,7 +24,7 @@ request.setCharacterEncoding("UTF-8");
  	
  	 script.println("<script>");
  	 script.println("alert('로그인 후에 이용해주세요.')");
- 	 script.println("history.back()");
+ 	 script.println("location.href = 'index.jsp'");
  	 script.println("</script>");
  	
 	}

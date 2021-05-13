@@ -22,8 +22,8 @@
     </header>
 
     <form action="loginPost.jsp" id="login-form" method="post">
-      <input type="email" placeholder="이메일" id = "id" name = "userID" />
-      <input type="password" placeholder="비밀번호" id = "pwd" name = "userPassword"/>
+      <input type="email" placeholder="이메일" id = "id" name = "userID" required/>
+      <input type="password" placeholder="비밀번호" id = "pwd" name = "userPassword" required/>
       <input type="submit" value="로그인" />
       <a href="join.jsp">회원가입</a>
     </form>

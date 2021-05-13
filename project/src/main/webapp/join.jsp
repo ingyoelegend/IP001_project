@@ -16,11 +16,11 @@
     </header>
 
     <form action="joinPost.jsp" id="login-form" method="post">
-      <input type="text" placeholder="이름" id="name" name = "userName" />
-      <input type="email" placeholder="이메일" id = "id" name = "userID"/>
-      <input type="password" placeholder="비밀번호" id = "pwd" name = "userPassword"/>
-      <input type="password" placeholder="비밀번호 재확인" id = "pwd2" name = "userPassword2"/>
-      <input type="text" placeholder="주소" id = "address" name = "userAddress"/>
+      <input type="text" placeholder="이름" id="name" name = "userName" required />
+      <input type="email" placeholder="이메일" id = "id" name = "userID" required/>
+      <input type="password" placeholder="비밀번호" id = "pwd" name = "userPassword" required/>
+      <input type="password" placeholder="비밀번호 재확인" id = "pwd2" name = "userPassword2" required/>
+      <input type="text" placeholder="주소" id = "address" name = "userAddress" required/>
       <input type="submit" value="회원가입" id = "submit" />
     </form>
 
