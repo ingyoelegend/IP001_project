@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "user.UserController" %>
+<%@ page import = "item.ItemController" %>
+<%@ page import = "item.Item" %>
 <%@ page import = "java.io.PrintWriter" %>
+<%@ page import = "java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,6 +13,30 @@
   </head>
 
   <body>
+  
+   <%
+  
+  int pageNumber = 1;
+  if(request.getParameter("pageNumber") != null)
+  {
+	  pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+	  
+	  ItemController it = new ItemController();
+	  if(!it.nextPage(pageNumber))
+	  {
+		  PrintWriter script = response.getWriter();
+			 script.println("<script>");
+		  	 script.println("alert('페이지에 상품이 존재하지 않습니다.')");
+		  	 script.println("location.href = 'index.jsp'");
+		  	 script.println("</script>");
+	  }
+  }
+  
+  
+  
+  %>
+  
+  
  <div id="header_wrap">
  
    <div id="header_wrap">
@@ -81,6 +108,50 @@
     <br />
     
     <div id = "content_wrap">
+    
+     <%
+        ItemController tmp = new ItemController();
+        ArrayList<Item> list = tmp.getItemList(pageNumber);
+        
+        for(int i = 0; i < list.size(); i++)
+        {
+        %>
+        	<div class="content_list">
+            <div class = "content_list_code">
+            <a href = "boardDetail.jsp?boardID=<%=list.get(i).getItemID()%>">
+ 			<%= list.get(i).getItemID() %>
+ 			</a>
+            </div>
+            
+            <div class = "content_list_title">
+ 			<%= list.get(i).getItemText() %>
+            </div >
+            		
+             <div class = "content_list_writer">
+ 		     <%= list.get(i).getItemTitle() %>
+            </div >		
+            		
+            <div class = "content_list_date">
+            <img src="upload/<%=list.get(i).getItemImage()%>" width = "200" height = "200" alt="">
+ 			
+            </div>
+            
+            <div class = "content_list_date">
+ 			<%= list.get(i).getItemCount() %>
+            </div>
+            
+            <div class = "content_list_date">
+              
+ 			<%= list.get(i).getItemPrice() %>
+            </div>
+            
+         </div>
+        
+        <%
+        }
+        %>
+        
+    
       <div id="content">
 
         

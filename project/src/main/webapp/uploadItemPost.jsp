@@ -46,7 +46,12 @@ request.setCharacterEncoding("UTF-8");
         }
        
      
-            String directory = application.getRealPath("/upload/");
+            String directory = this.getClass().getResource("").getPath();
+            directory = directory.substring(1,directory.indexOf(".metadata"))+"project/src/main/webapp/upload";
+
+   	
+
+
             int maxSize = 1024*1024*100;
             String encoding = "UTF-8";
             DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
