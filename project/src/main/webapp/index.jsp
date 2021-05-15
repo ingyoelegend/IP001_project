@@ -118,19 +118,12 @@
         %>
         	<div class="content_list">
             <div class = "content_list_code">
-            <a href = "boardDetail.jsp?boardID=<%=list.get(i).getItemID()%>">
- 			<%= list.get(i).getItemID() %>
+            <a href = "itemDetail.jsp?itemID=<%=list.get(i).getItemID()%>">
+            <%=list.get(i).getItemID()%>
+ 			<%= list.get(i).getItemTitle() %>
  			</a>
             </div>
-            
-            <div class = "content_list_title">
- 			<%= list.get(i).getItemText() %>
-            </div >
-            		
-             <div class = "content_list_writer">
- 		     <%= list.get(i).getItemTitle() %>
-            </div >		
-            		
+                     		
             <div class = "content_list_date">
             <img src="upload/<%=list.get(i).getItemImage()%>" width = "200" height = "200" alt="">
  			
