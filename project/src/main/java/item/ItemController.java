@@ -77,7 +77,7 @@ public class ItemController {
 	
 	public int upload(Item it)
 	{
-		String SQL = "INSERT INTO Item VALUES (?,?,?,?,?,?,?)";
+		String SQL = "INSERT INTO Item VALUES (?,?,?,?,?,?,?,?)";
 	
 		try
 		{
@@ -89,6 +89,7 @@ public class ItemController {
 			pstmt.setInt(5, it.getItemCount());
 			pstmt.setInt(6, it.getItemPrice());
 			pstmt.setString(7, it.getItemImageReal());
+			pstmt.setString(8, it.getItemCategory());
 			return pstmt.executeUpdate();	
 			
 		}
@@ -107,6 +108,7 @@ public class ItemController {
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
+			
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
@@ -118,6 +120,77 @@ public class ItemController {
 				tmp.setItemCount(rs.getInt(5));
 				tmp.setItemPrice(rs.getInt(6));
 				tmp.setItemImageReal(rs.getString(7));
+				tmp.setItemCategory(rs.getString(8));
+				list.add(tmp);
+			}
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return list;
+		
+	}
+	
+	
+	public ArrayList<Item> getSearchItemList(int pageNumber,String search)
+	{
+		String SQL = "SELECT * FROM Item WHERE itemID < ? AND itemTitle LIKE ?";
+		String input = "%"+search+"%";
+		
+		ArrayList<Item> list = new ArrayList<Item>();
+		try
+		{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
+			pstmt.setString(2,input);
+			rs = pstmt.executeQuery();
+			while(rs.next())
+			{
+				Item tmp = new Item();
+				tmp.setItemID(rs.getInt(1));
+				tmp.setItemTitle(rs.getString(2));
+				tmp.setItemText(rs.getString(3));
+				tmp.setItemImage(rs.getString(4));
+				tmp.setItemCount(rs.getInt(5));
+				tmp.setItemPrice(rs.getInt(6));
+				tmp.setItemImageReal(rs.getString(7));
+				tmp.setItemCategory(rs.getString(8));
+				list.add(tmp);
+			}
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return list;
+		
+	}
+	
+	public ArrayList<Item> getCategoryItemList(int pageNumber,String search)
+	{
+		String SQL = "SELECT * FROM Item WHERE itemID < ? AND itemCategory LIKE ?";
+		String input = "%"+search+"%";
+		ArrayList<Item> list = new ArrayList<Item>();
+		try
+		{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
+			pstmt.setString(2,input);
+			rs = pstmt.executeQuery();
+			while(rs.next())
+			{
+				Item tmp = new Item();
+				tmp.setItemID(rs.getInt(1));
+				tmp.setItemTitle(rs.getString(2));
+				tmp.setItemText(rs.getString(3));
+				tmp.setItemImage(rs.getString(4));
+				tmp.setItemCount(rs.getInt(5));
+				tmp.setItemPrice(rs.getInt(6));
+				tmp.setItemImageReal(rs.getString(7));
+				tmp.setItemCategory(rs.getString(8));
 				list.add(tmp);
 			}
 		

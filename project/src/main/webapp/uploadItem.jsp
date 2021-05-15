@@ -56,6 +56,16 @@ request.setCharacterEncoding("UTF-8");
        	     <br>
        	      <br>
        </div>
+       
+       <div id="category">
+      <span>카테고리</span>
+       <br>
+       <br>
+       	    <input type = "text" placeholder = "카테고리를 입력해 주세요." name = "itemCategory" maxlength = "40" required></input>
+       	    </div>
+       	  
+     
+      </div>
       
        <div id="title">
            <span>상품명</span>

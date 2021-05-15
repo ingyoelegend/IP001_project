@@ -65,6 +65,7 @@ request.setCharacterEncoding("UTF-8");
             String itemTitle = multipartRequest.getParameter("itemTitle");
             String itemPrice = multipartRequest.getParameter("itemPrice");
             String itemCount = multipartRequest.getParameter("itemCount");
+            String itemCategory = multipartRequest.getParameter("itemCategory");
            
             if(itemText == null || itemTitle == null ||itemCount.equals("") || itemPrice.equals("")  || itemImage == null )
             {
@@ -92,6 +93,7 @@ request.setCharacterEncoding("UTF-8");
             item.setItemCount(Integer.parseInt(itemCount));            
             item.setItemImage(itemImage);
             item.setItemImageReal(itemImageReal);
+            item.setItemCategory(itemCategory);
             
             ItemController tmp2 = new ItemController();
             

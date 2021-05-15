@@ -8,6 +8,14 @@ public class Item {
 	private String itemText;
 	private String itemImage;
 	private String itemImageReal;
+	private String itemCategory;
+	
+	public String getItemCategory() {
+		return itemCategory;
+	}
+	public void setItemCategory(String itemCategory) {
+		this.itemCategory = itemCategory;
+	}
 	private int itemCount;
 	private int itemPrice;
 	public int getItemID() {

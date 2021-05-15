@@ -8,7 +8,6 @@
 request.setCharacterEncoding("UTF-8");
 %>
 
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -49,7 +48,7 @@ request.setCharacterEncoding("UTF-8");
       <a id="logo" href="index.jsp"><img src="resource/logo.PNG" alt="" /></a>
       <form id="search" action="index_search.jsp" method="post">
         
-        <input type="text" id="search_input" name = "itemSearch" />
+        <input type="text" id="search_input" />
         <input type="submit" id="submit" value = "검색" />
     
                         
@@ -85,11 +84,11 @@ request.setCharacterEncoding("UTF-8");
 </div>
     <div id="nav">
       <div id="nav_list">
-        <a href="index.jsp?itemCategory=키보드" class="nav_item">키보드</a>
-        <a href="index.jsp?itemCategory=마우스" class="nav_item">마우스</a>
-        <a href="index.jsp?itemCategory=케이스" class="nav_item">케이스</a>
-        <a href="index.jsp?itemCategory=헤드폰" class="nav_item">헤드폰</a>
-        <a href="index.jsp?itemCategory=모니터" class="nav_item">모니터</a>
+        <a href="index.jsp?itemCategory=keyboard" class="nav_item">키보드</a>
+        <a href="index.jsp?itemCategory=mouse" class="nav_item">마우스</a>
+        <a href="index.jsp?itemCategory=case" class="nav_item">케이스</a>
+        <a href="index.jsp?itemCategory=headphone" class="nav_item">헤드폰</a>
+        <a href="index.jsp?itemCategory=monitor" class="nav_item">모니터</a>
         <a href="board.jsp" class="nav_item">게시판</a>
         <%
         UserController us = new UserController();
@@ -115,22 +114,12 @@ request.setCharacterEncoding("UTF-8");
     <div id = "content_wrap">
     
      <%
-     ArrayList<Item> list;
+  
      ItemController tmp = new ItemController();
-     String category = (String)request.getParameter("itemCategory");
-     if(category != null)
-     {
-    	  list = tmp.getCategoryItemList(pageNumber,category);
-   	  
-     }
-     else
-     {
-    	  list = tmp.getItemList(pageNumber);
-     }
-            
-       
-        
-        
+     String search = (String)request.getParameter("itemSearch");
+     ArrayList<Item> list = tmp.getSearchItemList(pageNumber,search);
+ 
+    	      
         for(int i = 0; i < list.size(); i++)
         {
         %>
@@ -175,9 +164,6 @@ request.setCharacterEncoding("UTF-8");
         
     
       <div id="content">
-
-        
-        
        
       </div>
     </div>
