@@ -114,5 +114,50 @@ public class UserController {
 			
 	}
 	
+	public int delete(String userID)
+	{
+		String SQL = "DELETE FROM USER WHERE userID = ?";
+	
+	 
+		try
+		{
+			
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+	
+			return pstmt.executeUpdate();
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+			return -1; //error
+	}
+	
+	public int opChange(String userID,int opCode)
+	{
+		String SQL = "UPDATE USER SET opCode = ? WHERE userID = ?";
+	
+	 
+		try
+		{
+			
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, opCode);
+			pstmt.setString(2, userID);
+	
+			return pstmt.executeUpdate();
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+			return -1; //error
+	}
+	
 	
 }

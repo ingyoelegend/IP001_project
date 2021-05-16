@@ -94,12 +94,13 @@ public class BoardController {
 	
 	public ArrayList<Board> getBoardList(int pageNumber)
 	{
-		String SQL = "SELECT * FROM Board WHERE boardID < ?";
+		String SQL = "SELECT * FROM Board WHERE boardID < ? AND boardID > ?";
 		ArrayList<Board> list = new ArrayList<Board>();
 		try
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
+			pstmt.setInt(1, (pageNumber*10)+1);
+			pstmt.setInt(2, (pageNumber*10)-10);
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
@@ -123,15 +124,16 @@ public class BoardController {
 	
 	public ArrayList<Board> getSearchBoardList(int pageNumber,String search)
 	{
-		String SQL = "SELECT * FROM Board WHERE boardID < ? AND boardTitle LIKE ?";
+		String SQL = "SELECT * FROM Board WHERE boardID < ? AND boardID > ? AND boardTitle LIKE ?";
 		String input = "%"+search+"%";
 		ArrayList<Board> search_list = new ArrayList<Board>();
 		try
 		{
 		
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
-			pstmt.setString(2,input);
+			pstmt.setInt(1, (pageNumber*10)+1);
+			pstmt.setInt(2, (pageNumber*10)-10);
+			pstmt.setString(3,input);
 			
 			
 			
@@ -162,28 +164,6 @@ public class BoardController {
 		
 	}
 	
-	public boolean nextPage(int pageNumber)
-	{
-		String SQL = "SELECT * FROM Board WHERE boardID < ?";
-	
-		try
-		{
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
-			rs = pstmt.executeQuery();
-			if(rs.next())
-			{
-				return true;
-			}
-		
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		return false;
-		
-	}
 	
 	public Board getBoardDetail(int boardID)
 	{
@@ -214,5 +194,28 @@ public class BoardController {
 		}
 			return tmp; //error
 	}
+	
+	public int delete(String boardID)
+	{
+		String SQL = "DELETE FROM Board WHERE boardID = ?";
+	
+	 
+		try
+		{
+			
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, boardID);
+	
+			return pstmt.executeUpdate();
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+			return -1; //error
+	}
+	
 
 }

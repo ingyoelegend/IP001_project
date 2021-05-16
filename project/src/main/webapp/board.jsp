@@ -21,15 +21,6 @@
   {
 	  pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 	  
-	  BoardController bd = new BoardController();
-	  if(!bd.nextPage(pageNumber))
-	  {
-		  PrintWriter script = response.getWriter();
-			 script.println("<script>");
-		  	 script.println("alert('페이지에 내용이 없습니다.')");
-		  	 script.println("location.href = 'board.jsp'");
-		  	 script.println("</script>");
-	  }
   }
   
   
@@ -40,9 +31,9 @@
    <div id="header_wrap">
     <div id="header">
       <a id="logo" href="index.jsp"><img src="resource/logo.PNG" alt="" /></a>
-      <form id="search" action="search.html" method="post">
+      <form id="search" action="index_search.jsp" method="post">
         
-        <input type="text" id="search_input" />
+        <input type="text" id="search_input" name = "itemSearch" />
         <input type="submit" id="submit" value = "검색" />
     
                         

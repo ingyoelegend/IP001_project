@@ -21,25 +21,23 @@ request.setCharacterEncoding("UTF-8");
   
    <%
   
+   ArrayList<Item> list;
+   ItemController tmp = new ItemController();
+   String category = request.getParameter("itemCategory");  
+
+ 
+   
   int pageNumber = 1;
   if(request.getParameter("pageNumber") != null)
   {
 	  pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-	  
-	  ItemController it = new ItemController();
-	  if(!it.nextPage(pageNumber))
-	  {
-		  PrintWriter script = response.getWriter();
-			 script.println("<script>");
-		  	 script.println("alert('페이지에 상품이 존재하지 않습니다.')");
-		  	 script.println("location.href = 'index.jsp'");
-		  	 script.println("</script>");
-	  }
   }
   
   
   
   %>
+  
+ 
   
   
  <div id="header_wrap">
@@ -114,14 +112,16 @@ request.setCharacterEncoding("UTF-8");
     
     <div id = "content_wrap">
     
+   
+    
      <%
-     ArrayList<Item> list;
-     ItemController tmp = new ItemController();
-     String category = (String)request.getParameter("itemCategory");
-     if(category != null)
+     
+    
+     if(!"null".equals(category) && category != null)
      {
+    
     	  list = tmp.getCategoryItemList(pageNumber,category);
-   	  
+   	      
      }
      else
      {
@@ -181,6 +181,12 @@ request.setCharacterEncoding("UTF-8");
        
       </div>
     </div>
+    
+     
+     <div class = "icon" id = "page">
+    <a href = "index.jsp?pageNumber=<%=pageNumber+1%>&itemCategory=<%=category%>" id = "write_button"><i class="fas fa-arrow-right fa-5x"></i></a>
+    </div>
+    
 
     <script
       src="https://kit.fontawesome.com/d19eaaab15.js"

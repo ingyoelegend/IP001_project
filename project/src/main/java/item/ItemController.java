@@ -52,28 +52,7 @@ public class ItemController {
 		
 	}
 	
-	public boolean nextPage(int pageNumber)
-	{
-		String SQL = "SELECT * FROM Item WHERE itemID < ?";
 	
-		try
-		{
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
-			rs = pstmt.executeQuery();
-			if(rs.next())
-			{
-				return true;
-			}
-		
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		return false;
-		
-	}
 	
 	public int upload(Item it)
 	{
@@ -82,7 +61,7 @@ public class ItemController {
 		try
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext());
+			pstmt.setInt(1, getNext());		
 			pstmt.setString(2, it.getItemTitle());
 			pstmt.setString(3, it.getItemText());
 			pstmt.setString(4, it.getItemImage());
@@ -102,12 +81,15 @@ public class ItemController {
 	
 	public ArrayList<Item> getItemList(int pageNumber)
 	{
-		String SQL = "SELECT * FROM Item WHERE itemID < ?";
+       
+		
+		String SQL = "SELECT * FROM Item WHERE itemID < ? AND itemID > ?";
 		ArrayList<Item> list = new ArrayList<Item>();
 		try
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
+			pstmt.setInt(1, (pageNumber*10)+1);
+			pstmt.setInt(2, (pageNumber*10)-10);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next())
@@ -122,6 +104,7 @@ public class ItemController {
 				tmp.setItemImageReal(rs.getString(7));
 				tmp.setItemCategory(rs.getString(8));
 				list.add(tmp);
+				
 			}
 		
 		}
@@ -136,15 +119,16 @@ public class ItemController {
 	
 	public ArrayList<Item> getSearchItemList(int pageNumber,String search)
 	{
-		String SQL = "SELECT * FROM Item WHERE itemID < ? AND itemTitle LIKE ?";
+		String SQL = "SELECT * FROM Item WHERE itemID < ? AND itemID > ? AND itemTitle LIKE ?";
 		String input = "%"+search+"%";
 		
 		ArrayList<Item> list = new ArrayList<Item>();
 		try
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
-			pstmt.setString(2,input);
+			pstmt.setInt(1, pageNumber*10+1);
+			pstmt.setInt(2, pageNumber*10-10);
+			pstmt.setString(3,input);
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
@@ -171,14 +155,15 @@ public class ItemController {
 	
 	public ArrayList<Item> getCategoryItemList(int pageNumber,String search)
 	{
-		String SQL = "SELECT * FROM Item WHERE itemID < ? AND itemCategory LIKE ?";
+		String SQL = "SELECT * FROM Item WHERE itemID < ? AND itemID > ? AND itemCategory LIKE ?";
 		String input = "%"+search+"%";
 		ArrayList<Item> list = new ArrayList<Item>();
 		try
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
-			pstmt.setString(2,input);
+			pstmt.setInt(1, pageNumber*10+1);
+			pstmt.setInt(2, pageNumber*10-10);
+			pstmt.setString(3,input);
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
@@ -201,6 +186,29 @@ public class ItemController {
 		}
 		return list;
 		
+	}
+	
+	
+	public int delete(String itemID)
+	{
+		String SQL = "DELETE FROM Item WHERE itemID = ?";
+	
+	 
+		try
+		{
+			
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, itemID);
+	
+			return pstmt.executeUpdate();
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+			return -1; //error
 	}
 
 }

@@ -27,15 +27,6 @@ request.setCharacterEncoding("UTF-8");
   {
 	  pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 	  
-	  BoardController bd = new BoardController();
-	  if(!bd.nextPage(pageNumber))
-	  {
-		  PrintWriter script = response.getWriter();
-			 script.println("<script>");
-		  	 script.println("alert('페이지에 내용이 없습니다.')");
-		  	 script.println("location.href = 'board.jsp'");
-		  	 script.println("</script>");
-	  }
   }
   
   
@@ -46,9 +37,9 @@ request.setCharacterEncoding("UTF-8");
    <div id="header_wrap">
     <div id="header">
       <a id="logo" href="index.jsp"><img src="resource/logo.PNG" alt="" /></a>
-      <form id="search" action="search.html" method="post">
+      <form id="search" action="index_search.jsp" method="post">
         
-        <input type="text" id="search_input" />
+        <input type="text" id="search_input"  name = "itemSearch"/>
         <input type="submit" id="submit" value = "검색" />
     
                         
@@ -122,7 +113,7 @@ request.setCharacterEncoding("UTF-8");
         
         <%
         BoardController tmp = new BoardController();
-        String search = (String)request.getParameter("board_search");
+        String search = request.getParameter("board_search");
         ArrayList<Board> list = tmp.getSearchBoardList(pageNumber,search);
         
      
@@ -177,7 +168,7 @@ request.setCharacterEncoding("UTF-8");
      
     
      <div class = "icon" id = "page">
-    <a href = "board.jsp?pageNumber=<%=pageNumber+1%>" id = "write_button"><i class="fas fa-arrow-right fa-5x"></i></a>
+    <a href = "board_search.jsp?pageNumber=<%=pageNumber+1%>&board_search=<%=search%>" id = "write_button"><i class="fas fa-arrow-right fa-5x"></i></a>
     </div>
     
    

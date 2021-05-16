@@ -19,21 +19,16 @@ request.setCharacterEncoding("UTF-8");
   <body>
   
    <%
-  
+   ArrayList<Item> list;
+   ItemController tmp = new ItemController();
+   String search = request.getParameter("itemSearch");  
+
+ 
+   
   int pageNumber = 1;
   if(request.getParameter("pageNumber") != null)
   {
 	  pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-	  
-	  ItemController it = new ItemController();
-	  if(!it.nextPage(pageNumber))
-	  {
-		  PrintWriter script = response.getWriter();
-			 script.println("<script>");
-		  	 script.println("alert('페이지에 상품이 존재하지 않습니다.')");
-		  	 script.println("location.href = 'index.jsp'");
-		  	 script.println("</script>");
-	  }
   }
   
   
@@ -48,8 +43,8 @@ request.setCharacterEncoding("UTF-8");
       <a id="logo" href="index.jsp"><img src="resource/logo.PNG" alt="" /></a>
       <form id="search" action="index_search.jsp" method="post">
         
-        <input type="text" id="search_input" />
-        <input type="submit" id="submit" value = "검색" />
+        <input type="text" id="search_input" name = "itemSearch"/>
+        <input type="submit" id="submit" value = "검색"/>
     
                         
       </form>
@@ -114,11 +109,7 @@ request.setCharacterEncoding("UTF-8");
     <div id = "content_wrap">
     
      <%
-  
-     ItemController tmp = new ItemController();
-     String search = (String)request.getParameter("itemSearch");
-     ArrayList<Item> list = tmp.getSearchItemList(pageNumber,search);
- 
+        list = tmp.getSearchItemList(pageNumber,search);
     	      
         for(int i = 0; i < list.size(); i++)
         {
@@ -167,6 +158,11 @@ request.setCharacterEncoding("UTF-8");
        
       </div>
     </div>
+    
+      <div class = "icon" id = "page">
+    <a href = "index_search.jsp?pageNumber=<%=pageNumber+1%>&itemSearch=<%=search%>" id = "write_button"><i class="fas fa-arrow-right fa-5x"></i></a>
+    </div>
+    
 
     <script
       src="https://kit.fontawesome.com/d19eaaab15.js"

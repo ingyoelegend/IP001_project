@@ -100,7 +100,7 @@ request.setCharacterEncoding("UTF-8");
        <br>
        <br>
        	    <input type="number" placeholder = "화폐 단위는(원)입니다" name = "itemPrice" required />
-       	    <div id = "write_submit_wrap"> <input type="submit" id="write_submit" value = "상품 등록" /> 
+       	    <div id = "write_submit_wrap"> <input type="submit" id="write_submit" value = "상품 등록" />
        	     <br>
        	      <br>
        </div>
@@ -112,7 +112,6 @@ request.setCharacterEncoding("UTF-8");
        
       </div>
       
-    </div>
     
        </form>
        

@@ -46,8 +46,8 @@ request.setCharacterEncoding("UTF-8");
         }
        
      
-            String directory = this.getClass().getResource("").getPath();
-            directory = directory.substring(1,directory.indexOf(".metadata"))+"project/src/main/webapp/upload";
+            String directory = application.getRealPath("/upload/");
+         
 
    	
 
