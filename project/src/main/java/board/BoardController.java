@@ -70,6 +70,34 @@ public class BoardController {
 		
 	}
 	
+	public boolean nextPage(int pageNumber,String text)
+	{
+       
+		
+		String SQL = "SELECT * FROM Item WHERE itemID < ? AND itemTitle LIKE ?";
+		String input = "%"+text+"%";
+		try
+		{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
+			pstmt.setString(2,input);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next())
+			{
+				return true;
+				
+			}
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+	
 	public int write(String boardTitle, String userID, String boardText)
 	{
 		String SQL = "INSERT INTO BOARD VALUES (?,?,?,?,?)";
@@ -94,13 +122,13 @@ public class BoardController {
 	
 	public ArrayList<Board> getBoardList(int pageNumber)
 	{
-		String SQL = "SELECT * FROM Board WHERE boardID < ? AND boardID > ?";
+		String SQL = "SELECT * FROM Board WHERE boardID < ? ORDER BY boardID DESC LIMIT 10";
 		ArrayList<Board> list = new ArrayList<Board>();
 		try
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, (pageNumber*10)+1);
-			pstmt.setInt(2, (pageNumber*10)-10);
+			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
+			
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
@@ -124,16 +152,16 @@ public class BoardController {
 	
 	public ArrayList<Board> getSearchBoardList(int pageNumber,String search)
 	{
-		String SQL = "SELECT * FROM Board WHERE boardID < ? AND boardID > ? AND boardTitle LIKE ?";
+		String SQL = "SELECT * FROM Board WHERE boardID < ? AND boardTitle LIKE ? ORDER BY boardID DESC LIMIT 10";
 		String input = "%"+search+"%";
 		ArrayList<Board> search_list = new ArrayList<Board>();
 		try
 		{
 		
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, (pageNumber*10)+1);
-			pstmt.setInt(2, (pageNumber*10)-10);
-			pstmt.setString(3,input);
+			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
+		
+			pstmt.setString(2,input);
 			
 			
 			

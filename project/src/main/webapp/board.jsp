@@ -55,6 +55,7 @@
       	else
       	{
       		out.println("<a href = 'logoutController.jsp'>로그아웃</a>");
+      		out.println("<a href = 'changeProfile.jsp'>프로필 수정</a>");
       		out.println("<a href = 'join.jsp'>회원가입</a>");  	  
       	}
       	
@@ -71,11 +72,11 @@
 
     <div id="nav">
       <div id="nav_list">
-        <a href="" class="nav_item">키보드</a>
-        <a href="" class="nav_item">마우스</a>
-        <a href="" class="nav_item">케이스</a>
-        <a href="" class="nav_item">헤드폰</a>
-        <a href="" class="nav_item">모니터</a>
+        <a href="index.jsp?itemCategory=키보드" class="nav_item">키보드</a>
+        <a href="index.jsp?itemCategory=마우스" class="nav_item">마우스</a>
+        <a href="index.jsp?itemCategory=케이스" class="nav_item">케이스</a>
+        <a href="index.jsp?itemCategory=헤드폰" class="nav_item">헤드폰</a>
+        <a href="index.jsp?itemCategory=모니터" class="nav_item">모니터</a>
         <a href="board.jsp" class="nav_item">게시판</a>
         <%
         UserController us = new UserController();
@@ -172,10 +173,19 @@
     
      
     
+     <%if(tmp.nextPage(pageNumber,""))
+     {
+    	 
+     %>
      <div class = "icon" id = "page">
-    <a href = "board.jsp?pageNumber=<%=pageNumber+1%>" id = "write_button"><i class="fas fa-arrow-right fa-5x"></i></a>
+     <a href = "board.jsp?pageNumber=<%=pageNumber+1%>" id = "write_button"><i class="fas fa-arrow-right fa-5x"></i></a>
     </div>
+    <%
+     }
+    %>
     
+    
+  
    
 
     <script

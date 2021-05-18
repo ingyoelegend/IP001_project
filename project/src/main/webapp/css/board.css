@@ -8,7 +8,21 @@
 {
     
 	display:block;
+	justify-content:center;
 
+
+}
+
+
+#content_wrap
+{
+  display: flex;
+  margin-top:100px;
+ 
+ align-items:center;
+  justify-content:center;
+
+  min-width: 1000px;
 }
 
 

@@ -65,6 +65,7 @@ request.setCharacterEncoding("UTF-8");
       	else
       	{
       		out.println("<a href = 'logoutController.jsp'>로그아웃</a>");
+      		out.println("<a href = 'changeProfile.jsp'>프로필 수정</a>");
       		out.println("<a href = 'join.jsp'>회원가입</a>");  	  
       	}
       	
@@ -79,11 +80,11 @@ request.setCharacterEncoding("UTF-8");
 </div>
     <div id="nav">
       <div id="nav_list">
-        <a href="index.jsp?itemCategory=keyboard" class="nav_item">키보드</a>
-        <a href="index.jsp?itemCategory=mouse" class="nav_item">마우스</a>
-        <a href="index.jsp?itemCategory=case" class="nav_item">케이스</a>
-        <a href="index.jsp?itemCategory=headphone" class="nav_item">헤드폰</a>
-        <a href="index.jsp?itemCategory=monitor" class="nav_item">모니터</a>
+        <a href="index.jsp?itemCategory=키보드" class="nav_item">키보드</a>
+        <a href="index.jsp?itemCategory=마우스" class="nav_item">마우스</a>
+        <a href="index.jsp?itemCategory=케이스" class="nav_item">케이스</a>
+        <a href="index.jsp?itemCategory=헤드폰" class="nav_item">헤드폰</a>
+        <a href="index.jsp?itemCategory=모니터" class="nav_item">모니터</a>
         <a href="board.jsp" class="nav_item">게시판</a>
         <%
         UserController us = new UserController();
@@ -114,7 +115,7 @@ request.setCharacterEncoding("UTF-8");
         for(int i = 0; i < list.size(); i++)
         {
         %>
-            
+            <div id = "content">
         	<div class="content_list">
         	
             <div id = "content_image">
@@ -128,7 +129,7 @@ request.setCharacterEncoding("UTF-8");
                     
              <div id = "content_name">
  			     <a href = "itemDetail.jsp?itemID=<%=list.get(i).getItemID()%>">
-                 <%=list.get(i).getItemID()%>
+              
  			     <%= list.get(i).getItemTitle() %>
  			    </a>
             </div> 		
@@ -148,20 +149,27 @@ request.setCharacterEncoding("UTF-8");
            
             
          </div>
+         </div>
         
         <%
         }
         %>
         
     
-      <div id="content">
-       
-      </div>
+      
     </div>
     
-      <div class = "icon" id = "page">
+     <%if(tmp.nextPage(pageNumber,search))
+     {
+    	 
+     %>
+     <div class = "icon" id = "page">
     <a href = "index_search.jsp?pageNumber=<%=pageNumber+1%>&itemSearch=<%=search%>" id = "write_button"><i class="fas fa-arrow-right fa-5x"></i></a>
     </div>
+    <%
+     }
+    %>
+    
     
 
     <script

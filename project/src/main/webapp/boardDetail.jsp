@@ -55,6 +55,7 @@
       	else
       	{
       		out.println("<a href = 'logoutController.jsp'>로그아웃</a>");
+      		out.println("<a href = 'changeProfile.jsp'>프로필 수정</a>");
       		out.println("<a href = 'join.jsp'>회원가입</a>");  	  
       	}
       	

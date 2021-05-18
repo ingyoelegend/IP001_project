@@ -28,10 +28,17 @@ request.setCharacterEncoding("UTF-8");
  
    
   int pageNumber = 1;
+  
+  if("null".equals(category) || category == null)
+  {
+	  category = "";
+  }
+  
   if(request.getParameter("pageNumber") != null)
   {
 	  pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
   }
+
   
   
   
@@ -69,6 +76,7 @@ request.setCharacterEncoding("UTF-8");
       	else
       	{
       		out.println("<a href = 'logoutController.jsp'>로그아웃</a>");
+      		out.println("<a href = 'changeProfile.jsp'>프로필 수정</a>");
       		out.println("<a href = 'join.jsp'>회원가입</a>");  	  
       	}
       	
@@ -77,6 +85,8 @@ request.setCharacterEncoding("UTF-8");
         </div>
      </div>
     </div>
+    
+    
  
     </div>
    </div>
@@ -117,30 +127,23 @@ request.setCharacterEncoding("UTF-8");
      <%
      
     
-     if(!"null".equals(category) && category != null)
-     {
+
+    	  list = tmp.getItemList(pageNumber,category);
     
-    	  list = tmp.getCategoryItemList(pageNumber,category);
-   	      
-     }
-     else
-     {
-    	  list = tmp.getItemList(pageNumber);
-     }
-            
        
         
         
         for(int i = 0; i < list.size(); i++)
         {
         %>
-            
+            <div id = "content">
         	<div class="content_list">
         	
             <div id = "content_image">
             	  <div>
+            	    <a href = "itemDetail.jsp?itemID=<%=list.get(i).getItemID()%>">
                   <img src="upload/<%=list.get(i).getItemImage()%>" width = "200" height = "200" alt="">
- 			       
+ 			        </a>
                   </div>
       
             </div>
@@ -148,14 +151,9 @@ request.setCharacterEncoding("UTF-8");
                     
              <div id = "content_name">
  			     <a href = "itemDetail.jsp?itemID=<%=list.get(i).getItemID()%>">
-                 <%=list.get(i).getItemID()%>
  			     <%= list.get(i).getItemTitle() %>
  			    </a>
-            </div> 		
-          
-            
-            
-            <div id = "content_info">
+ 			    <div id = "content_info">
                <div id = "content_count">
  				잔여 상품 개수: <%= list.get(i).getItemCount() %>
             	</div>
@@ -165,27 +163,45 @@ request.setCharacterEncoding("UTF-8");
  				<%= list.get(i).getItemPrice() %>
             	</div>
             </div>
+            </div> 		
+          
+              <div id = "content_image">
+            	  <div>
+            	    <a href = ".jsp?itemID=<%=list.get(i).getItemID()%>">
+                       구매하기
+                     </a>
+                       <br>
+                       <a href = ".jsp?itemID=<%=list.get(i).getItemID()%>">
+                       장바구니
+                     </a>
+                  </div>
+      
+            </div>
+            
+            
            
             
+         </div>
+         
          </div>
         
         <%
         }
         %>
-        
+        </div>
+   
+ 
     
-      <div id="content">
-
-        
-        
-       
-      </div>
-    </div>
-    
-     
+     <%if(tmp.nextPage(pageNumber,category))
+     {
+    	 
+     %>
      <div class = "icon" id = "page">
     <a href = "index.jsp?pageNumber=<%=pageNumber+1%>&itemCategory=<%=category%>" id = "write_button"><i class="fas fa-arrow-right fa-5x"></i></a>
     </div>
+    <%
+     }
+    %>
     
 
     <script
