@@ -32,7 +32,7 @@ request.setCharacterEncoding("UTF-8");
    <div id="header_wrap">
     <div id="header">
       <a id="logo" href="index.jsp"><img src="resource/logo.PNG" alt="" /></a>
-      <form id="search" action="search.html" method="post">
+      <form id="search" action="index_search.jsp" method="post">
         
         <input type="text" id="search_input" required/>
         <input type="submit" id="submit" value = "검색" required/>
