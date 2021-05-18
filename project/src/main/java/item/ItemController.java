@@ -181,6 +181,42 @@ public class ItemController {
 		
 	}
 	
+
+	public Item itemDetail(String item)
+	{
+		String SQL = "SELECT * FROM Item WHERE itemID = ?";
+		Item tmp = new Item();
+		
+		try
+		{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+		
+			pstmt.setString(1,item);
+			rs = pstmt.executeQuery();
+			while(rs.next())
+			{
+				 tmp = new Item();
+				tmp.setItemID(rs.getInt(1));
+				tmp.setItemTitle(rs.getString(2));
+				tmp.setItemText(rs.getString(3));
+				tmp.setItemImage(rs.getString(4));
+				tmp.setItemCount(rs.getInt(5));
+				tmp.setItemPrice(rs.getInt(6));
+				tmp.setItemImageReal(rs.getString(7));
+				tmp.setItemCategory(rs.getString(8));
+			
+			}
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return tmp;
+		
+	}
+	
+	
 	
 	public int delete(String itemID)
 	{

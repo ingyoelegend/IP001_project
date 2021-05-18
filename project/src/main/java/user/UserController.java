@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import board.Board;
+
 public class UserController {
 	private Connection conn;
 	private PreparedStatement pstmt;
@@ -157,6 +159,41 @@ public class UserController {
 			e.printStackTrace();
 		}
 			return -1; //error
+	}
+	
+	
+	public User profile(String userID)
+	{
+		String SQL = "SELECT * FROM USER WHERE userID = ?";
+	
+		User tmp = new User();
+		try
+		{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				
+				tmp.setUserID(rs.getString(1));
+				tmp.setUserPassword(rs.getString(2));
+				tmp.setUserName(rs.getString(3));
+				tmp.setUserAddress(rs.getString(4));
+				tmp.setOpCode(rs.getInt(5));
+				return tmp;
+			}
+			
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return tmp;
+		
 	}
 	
 	

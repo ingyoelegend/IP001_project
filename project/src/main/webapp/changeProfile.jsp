@@ -1,89 +1,168 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "user.UserController" %> 
+<%@ page import = "user.User" %> 
 <%@ page import = "java.io.PrintWriter" %>
-<%@ page import = "user.UserController" %>
-<%@ page import = "com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
-<%@ page import = "com.oreilly.servlet.MultipartRequest" %>
-<%@ page import = "item.Item" %>
-<%@ page import = "item.ItemController" %>
-
-
-<%
-request.setCharacterEncoding("UTF-8");
-%>
-
+<%@ page import = "java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width"/>
     <title>영기PC</title>
-    <link rel="stylesheet" href="css/uploadItem.css" />
+    <link rel="stylesheet" href="css/board.css" />
   </head>
 
   <body>
-    <%
+  
+  <%
+  
+  int pageNumber = 1;
+  if(request.getParameter("pageNumber") != null)
+  {
+	  pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+	  
+  }
+  
+  
+  
+  %>
+  
+  
+   <div id="header_wrap">
+    <div id="header">
+      <a id="logo" href="index.jsp"><img src="resource/logo.PNG" alt="" /></a>
+      <form id="search" action="index_search.jsp" method="post">
+        
+        <input type="text" id="search_input" name = "itemSearch" />
+        <input type="submit" id="submit" value = "검색" />
+    
+                        
+      </form>
+
+
+ 	 <div id="dropdown">
+ 	   <div id = "dropdown_icon"> <i class="far fa-user fa-lg"></i> 
+ 	  
+ 	   
+     	
+      	<div id="dropdown-content">
+      	<%
+      	if(session.getAttribute("userID") == null)
+      	{
+      		out.println("<a href = 'login.jsp'>로그인</a>");
+      		out.println("<a href = 'join.jsp'>회원가입</a>");  	  
+      	}
+      	else
+      	{
+      		out.println("<a href = 'logoutController.jsp'>로그아웃</a>");
+      		out.println("<a href = 'changeProfile.jsp'>프로필 수정</a>");
+      		out.println("<a href = 'join.jsp'>회원가입</a>");  	  
+      	}
+      	
+      	%>
+
+        </div>
+     </div>
+    </div>
+
+    </div>
+   </div>
+
+
+
+    <div id="nav">
+      <div id="nav_list">
+        <a href="index.jsp?itemCategory=키보드" class="nav_item">키보드</a>
+        <a href="index.jsp?itemCategory=마우스" class="nav_item">마우스</a>
+        <a href="index.jsp?itemCategory=케이스" class="nav_item">케이스</a>
+        <a href="index.jsp?itemCategory=헤드폰" class="nav_item">헤드폰</a>
+        <a href="index.jsp?itemCategory=모니터" class="nav_item">모니터</a>
+        <a href="board.jsp" class="nav_item">게시판</a>
+        <%
         UserController us = new UserController();
         
-    	if(session.getAttribute("userID") == null)
-    	{
-    		 PrintWriter script = response.getWriter();
+        if(us.getOpCode((String)session.getAttribute("userID")) == 1)
+        {
         	
-        	 script.println("<script>");
-        	 script.println("alert('로그인 후에 이용해주세요.')");
-        	 script.println("location.href = 'login.jsp'");
-        	 script.println("</script>");
-        	
-    	}
-        
-        if(us.getOpCode((String)session.getAttribute("userID")) != 1)
-        {     
-        	 PrintWriter script = response.getWriter();
-        	
-        	 script.println("<script>");
-        	 script.println("alert('관리자 권한을 보유하고 있지 않습니다.')");
-        	 script.println("location.href = 'index.jsp'");
-        	 script.println("</script>");
-        	
-        }
-             
         %>
-            
+        
+        <a href="master.jsp" class="nav_item">관리자 페이지</a>
+        
+        <%
+        
+        }
        
-         
-        <form id="write_form" action="customMasterPost.jsp" method="post">
-        
-        <div id = "content_wrap">
-			 <input type="text" name = "userID" required/>
-       	     <br>
-       	     <input type="text" name = "opCode" placeholder = "권한 추가는 1, 삭제는 0" required/>
-       	     <br>
-       	      <div id = "write_submit_wrap"> <input type="submit" id="write_submit" value = "수정" />
-       	        <br>
-       	        <br>
-             </div>
-
-		</div>
+        %>
 
 
-		</form>
-         
-            
-          
-            
-            
-            
-          
-			
-	
-      
-       
-        
-      
-        
-   
- 
-
-
+      </div>
+    </div>
+    <br />
     
+  <div id = "content_wrap">
+    <div id="content">
+
+        <div class="content_list">
+           <div class = "content_list_code">
+				ID
+           </div>
+           
+           <div class = "content_list_title">
+				비밀번호
+           </div >
+           		
+            <div class = "content_list_writer">
+				이름
+           </div >		
+           		
+           <div class = "content_list_date">
+				주소
+           </div>
+           
+        </div>
+        
+     
+ 
+        <%   
+        User user = us.profile((String)session.getAttribute("userID"));
+        String email = user.getUserID();
+        String password = user.getUserPassword();
+        String name  = user.getUserName();
+        String address = user.getUserAddress();
+        
+    
+        %>
+         
+      
+        	<div class="content_list">
+            <div class = "content_list_code">
+           
+ 			<%=email%>
+ 			
+            </div>
+            
+            <div class = "content_list_title">
+ 			<%=password%>
+            </div >
+            		
+             <div class = "content_list_writer">
+ 		     <%=name%>
+            </div >		
+            		
+            <div class = "content_list_date">
+ 			<%=address%>
+            </div>
+            
+         </div>
+          </div>
+           </div>
+   
+        
+ 
+       
+  
+  
+   
+
     <script
       src="https://kit.fontawesome.com/d19eaaab15.js"
       crossorigin="anonymous"

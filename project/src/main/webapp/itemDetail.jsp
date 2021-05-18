@@ -14,38 +14,11 @@ request.setCharacterEncoding("UTF-8");
   <head>
     <meta name="viewport" content="width=device-width"/>
     <title>영기PC</title>
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/itemDetail.css" />
   </head>
 
   <body>
-  
-   <%
-  
-   ArrayList<Item> list;
-   ItemController tmp = new ItemController();
-   String category = request.getParameter("itemCategory");  
-
  
-   
-  int pageNumber = 1;
-  
-  if("null".equals(category) || category == null)
-  {
-	  category = "";
-  }
-  
-  if(request.getParameter("pageNumber") != null)
-  {
-	  pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-  }
-
-  
-  
-  
-  %>
-  
- 
-  
   
  <div id="header_wrap">
  
@@ -101,6 +74,7 @@ request.setCharacterEncoding("UTF-8");
         <a href="board.jsp" class="nav_item">게시판</a>
         <%
         UserController us = new UserController();
+   
         
         if(us.getOpCode((String)session.getAttribute("userID")) == 1)
         {
@@ -120,88 +94,40 @@ request.setCharacterEncoding("UTF-8");
     </div>
     <br />
     
-    <div id = "content_wrap">
     
-   
-    
-     <%
-     
-    
-
-    	  list = tmp.getItemList(pageNumber,category);
-    
-       
-        
-        
-        for(int i = 0; i < list.size(); i++)
-        {
-        %>
-            <div id = "content">
-        	<div class="content_list">
-        	
-            <div id = "content_image">
-            	  <div>
-            	    <a href = "itemDetail.jsp?itemID=<%=list.get(i).getItemID()%>">
-                  <img src="upload/<%=list.get(i).getItemImage()%>" width = "200" height = "200" alt="">
- 			        </a>
-                  </div>
-      
-            </div>
-                    
-                    
-             <div id = "content_name">
- 			     <a href = "itemDetail.jsp?itemID=<%=list.get(i).getItemID()%>">
- 			     <%= list.get(i).getItemTitle() %>
- 			    </a>
- 			    <div id = "content_info">
-               <div id = "content_count">
- 				잔여 상품 개수: <%= list.get(i).getItemCount() %>
-            	</div>
-            
-            	<div id = "content_price">
-                 가격: 
- 				<%= list.get(i).getItemPrice() %>
-            	</div>
-            </div>
-            </div> 		
-          
-              <div id = "content_image">
-            	  <div>
-            	    <a href = ".jsp?itemID=<%=list.get(i).getItemID()%>">
-                       구매하기
-                     </a>
-                       <br>
-                       <a href = ".jsp?itemID=<%=list.get(i).getItemID()%>">
-                       장바구니
-                     </a>
-                  </div>
-      
-            </div>
-            
-            
-           
-            
-         </div>
-         
-         </div>
-        
-        <%
-        }
-        %>
-        </div>
-   
- 
-    
-     <%if(tmp.nextPage(pageNumber,category))
-     {
-    	 
-     %>
-     <div class = "icon" id = "page">
-    <a href = "index.jsp?pageNumber=<%=pageNumber+1%>&itemCategory=<%=category%>" id = "write_button"><i class="fas fa-arrow-right fa-5x"></i></a>
-    </div>
     <%
-     }
+    ItemController it = new ItemController();
+    String itemID = request.getParameter("itemID");
+    Item result = it.itemDetail(itemID);
     %>
+    
+    <div id = "content_wrap">
+       
+   
+    <div class="content_list">
+    
+    		   <div id = "content_image">
+            	  <%=result.getItemTitle() %>
+                  <img src="upload/<%=result.getItemImage()%>" width = "200" height = "200" alt="">
+ 			  
+                  </div>
+      
+               </div>
+               
+                 <div id = "content_info">
+            	 
+                <%=result.getItemPrice() %>
+                <%=result.getItemText() %>
+                
+                </div>
+    
+    
+         
+            
+   </div>
+     
+     
+   </div>
     
 
     <script

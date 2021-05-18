@@ -76,7 +76,8 @@ request.setCharacterEncoding("UTF-8");
              	 script.println("</script>");
             }  
 
-            if(!itemImage.substring(itemImage.lastIndexOf(".")+1).equals("jpg") && !itemImage.substring(itemImage.lastIndexOf(".")+1).equals("jpeg")&& !itemImage.substring(itemImage.lastIndexOf(".")+1).equals("png"))
+            if(!itemImage.substring(itemImage.lastIndexOf(".")+1).equals("jpg") && !itemImage.substring(itemImage.lastIndexOf(".")+1).equals("jpeg")&& !itemImage.substring(itemImage.lastIndexOf(".")+1).equals("png")
+            		&& !itemImage.substring(itemImage.lastIndexOf(".")+1).equals("PNG") && !itemImage.substring(itemImage.lastIndexOf(".")+1).equals("JPEG")&& !itemImage.substring(itemImage.lastIndexOf(".")+1).equals("JPG"))
             {
             	 PrintWriter script = response.getWriter();
              	 script.println("<script>");
@@ -84,6 +85,8 @@ request.setCharacterEncoding("UTF-8");
                	 script.println("location.href = 'uploadItem.jsp'");
              	 script.println("</script>");
             }
+            else
+            {
             
             Item item = new Item();
             
@@ -108,6 +111,7 @@ request.setCharacterEncoding("UTF-8");
              	 script.println("location.href = 'index.jsp'");
            	 script.println("</script>");
               
+            }
             }
              
         %>

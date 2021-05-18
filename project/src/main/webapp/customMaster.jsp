@@ -52,10 +52,17 @@ request.setCharacterEncoding("UTF-8");
         <form id="write_form" action="customMasterPost.jsp" method="post">
         
         <div id = "content_wrap">
-			 <input type="text" name = "userID" required/>
+			 <input type="text" name = "userID" placeholder = "이메일" required/>
        	     <br>
-       	     <input type="text" name = "opCode" placeholder = "권한 추가는 1, 삭제는 0" required/>
+       	      <br>
+       	      <br>
+       	     추가
+       	     <input type="radio" name = "opCode" value = 1 />
+       	     삭제
+       	     <input type="radio" name = "opCode" value = 0/>
        	     <br>
+       	     <br>
+       	      <br>
        	      <div id = "write_submit_wrap"> <input type="submit" id="write_submit" value = "수정" />
        	        <br>
        	        <br>
