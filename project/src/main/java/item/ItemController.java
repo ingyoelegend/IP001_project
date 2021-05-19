@@ -80,17 +80,47 @@ public class ItemController {
 			return -1; //error
 	}
 	
-	public boolean nextPage(int pageNumber,String text)
+	public boolean nextCategoryPage(int pageNumber,String text)
 	{
        
 		
-		String SQL = "SELECT * FROM Item WHERE itemID < ? AND itemTitle LIKE ?";
+		String SQL = "SELECT * FROM(SELECT itemID,itemTitle,itemText,itemImage,itemCount,itemPrice,itemImageReal,itemCategory,ROW_NUMBER() OVER(ORDER BY itemID DESC) AS RNUM FROM Item WHERE itemCategory LIKE ? ORDER BY itemID DESC)tmp WHERE RNUM > ? AND RNUM < ?";
 		String input = "%"+text+"%";
 		try
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
-			pstmt.setString(2,input);
+			pstmt.setString(1,input);
+			pstmt.setInt(2, pageNumber*10-10);
+			pstmt.setInt(3, pageNumber*10+1);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next())
+			{
+				return true;
+				
+			}
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+	
+	public boolean nextSearchPage(int pageNumber,String text)
+	{
+       
+		
+		String SQL = "SELECT * FROM(SELECT itemID,itemTitle,itemText,itemImage,itemCount,itemPrice,itemImageReal,itemCategory,ROW_NUMBER() OVER(ORDER BY itemID DESC) AS RNUM FROM Item WHERE itemCategory LIKE ? ORDER BY itemID DESC)tmp WHERE RNUM > ? AND RNUM < ?";
+		String input = "%"+text+"%";
+		try
+		{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1,input);
+			pstmt.setInt(2, pageNumber*10-10);
+			pstmt.setInt(3, pageNumber*10+1);
 			
 			rs = pstmt.executeQuery();
 			if(rs.next())
@@ -113,16 +143,17 @@ public class ItemController {
 	
 	public ArrayList<Item> getSearchItemList(int pageNumber,String search)
 	{
-		String SQL = "SELECT * FROM Item WHERE itemID < ? AND itemTitle LIKE ? ORDER BY itemID DESC LIMIT 10";
+		String SQL = "SELECT * FROM(SELECT itemID,itemTitle,itemText,itemImage,itemCount,itemPrice,itemImageReal,itemCategory,ROW_NUMBER() OVER(ORDER BY itemID DESC) AS RNUM FROM Item WHERE itemTitle LIKE ? ORDER BY itemID DESC)tmp WHERE RNUM > ? AND RNUM < ?";
 		String input = "%"+search+"%";
 		
 		ArrayList<Item> list = new ArrayList<Item>();
 		try
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
+			pstmt.setString(1,input);
+			pstmt.setInt(2, pageNumber*10-10);
+			pstmt.setInt(3, pageNumber*10+1);
 			
-			pstmt.setString(2,input);
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
@@ -149,14 +180,16 @@ public class ItemController {
 	
 	public ArrayList<Item> getItemList(int pageNumber,String search)
 	{
-		String SQL = "SELECT * FROM Item WHERE itemID < ? AND itemCategory LIKE ? ORDER BY itemID DESC LIMIT 10";
+		String SQL = "SELECT * FROM(SELECT itemID,itemTitle,itemText,itemImage,itemCount,itemPrice,itemImageReal,itemCategory,ROW_NUMBER() OVER(ORDER BY itemID DESC) AS RNUM FROM Item WHERE itemCategory LIKE ? ORDER BY itemID DESC)tmp WHERE RNUM > ? AND RNUM < ?";
 		String input = "%"+search+"%";
 		ArrayList<Item> list = new ArrayList<Item>();
 		try
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
-			pstmt.setString(2,input);
+			pstmt.setString(1,input);
+			pstmt.setInt(2, pageNumber*10-10);
+			pstmt.setInt(3, pageNumber*10+1);
+			
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{

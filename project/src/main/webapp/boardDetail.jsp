@@ -34,7 +34,7 @@
       <form id="search" action="index_search.jsp" method="post">
         
         <input type="text" id="search_input" />
-        <input type="submit" id="submit" value = "검색" />
+        <input type="submit" id="submit" value = "&#xf002;" />
     
                         
       </form>

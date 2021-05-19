@@ -40,7 +40,7 @@ request.setCharacterEncoding("UTF-8");
       <form id="search" action="index_search.jsp" method="post">
         
         <input type="text" id="search_input"  name = "itemSearch"/>
-        <input type="submit" id="submit" value = "검색" />
+        <input type="submit" id="submit" value = "&#xf002;" />
     
                         
       </form>
@@ -84,7 +84,21 @@ request.setCharacterEncoding("UTF-8");
         <a href="index.jsp?itemCategory=헤드폰" class="nav_item">헤드폰</a>
         <a href="index.jsp?itemCategory=모니터" class="nav_item">모니터</a>
         <a href="board.jsp" class="nav_item">게시판</a>
-
+         <%
+        UserController us = new UserController();
+        
+        if(us.getOpCode((String)session.getAttribute("userID")) == 1)
+        {
+        	
+        %>
+        
+        <a href="master.jsp" class="nav_item">관리자 페이지</a>
+        
+        <%
+        
+        }
+       
+        %>
 
       </div>
     </div>
@@ -166,7 +180,7 @@ request.setCharacterEncoding("UTF-8");
     <a href = "board_write.jsp" id = "write_button"><i class="fas fa-pencil-alt fa-5x"></i></a>
     </div>
     
-       <%if(tmp.nextPage(pageNumber,search))
+       <%if(tmp.nextSearchPage(pageNumber+1,search))
      {
     	 
      %>

@@ -28,7 +28,7 @@ request.setCharacterEncoding("UTF-8");
       <form id="search" action="index_search.jsp" method="post">
         
         <input type="text" id="search_input" name = "itemSearch" />
-        <input type="submit" id="submit" value = "검색" />
+        <input type="submit" id="submit" value = "&#xf002;" />
     
                         
       </form>

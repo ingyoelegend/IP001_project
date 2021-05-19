@@ -96,7 +96,7 @@ request.setCharacterEncoding("UTF-8");
        	            <br>
        <br>
        	
-       	    <textarea placeholder = "소개글을 입력해 주세요." name = "itemText" maxlength = "2048" required></textarea>
+       	    <textarea placeholder = "소개글을 입력해 주세요." name = "itemText" maxlength = "100" required></textarea>
        	    </div>
        	  
      

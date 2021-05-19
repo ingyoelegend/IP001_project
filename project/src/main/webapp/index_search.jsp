@@ -25,12 +25,18 @@ request.setCharacterEncoding("UTF-8");
 
  
    
-  int pageNumber = 1;
-  if(request.getParameter("pageNumber") != null)
-  {
-	  pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-  }
-  
+   int pageNumber = 1;
+   
+   if("null".equals(search) || search == null)
+   {
+ 	  search = "";
+   }
+   
+   if(request.getParameter("pageNumber") != null)
+   {
+ 	  pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+   }
+
   
   
   %>
@@ -44,7 +50,7 @@ request.setCharacterEncoding("UTF-8");
       <form id="search" action="index_search.jsp" method="post">
         
         <input type="text" id="search_input" name = "itemSearch"/>
-        <input type="submit" id="submit" value = "검색"/>
+        <input type="submit" id="submit" value = "&#xf002;"/>
     
                         
       </form>
@@ -115,13 +121,14 @@ request.setCharacterEncoding("UTF-8");
         for(int i = 0; i < list.size(); i++)
         {
         %>
-            <div id = "content">
+             <div id = "content">
         	<div class="content_list">
         	
             <div id = "content_image">
             	  <div>
+            	    <a href = "itemDetail.jsp?itemID=<%=list.get(i).getItemID()%>">
                   <img src="upload/<%=list.get(i).getItemImage()%>" width = "200" height = "200" alt="">
- 			       
+ 			        </a>
                   </div>
       
             </div>
@@ -129,14 +136,9 @@ request.setCharacterEncoding("UTF-8");
                     
              <div id = "content_name">
  			     <a href = "itemDetail.jsp?itemID=<%=list.get(i).getItemID()%>">
-              
  			     <%= list.get(i).getItemTitle() %>
  			    </a>
-            </div> 		
-          
-            
-            
-            <div id = "content_info">
+ 			    <div id = "content_info">
                <div id = "content_count">
  				잔여 상품 개수: <%= list.get(i).getItemCount() %>
             	</div>
@@ -146,9 +148,26 @@ request.setCharacterEncoding("UTF-8");
  				<%= list.get(i).getItemPrice() %>
             	</div>
             </div>
+            </div> 		
+          
+              <div id = "content_image">
+            	  <div>
+            	    <a href = ".jsp?itemID=<%=list.get(i).getItemID()%>">
+                       구매하기
+                     </a>
+                       <br>
+                       <a href = ".jsp?itemID=<%=list.get(i).getItemID()%>">
+                       장바구니
+                     </a>
+                  </div>
+      
+            </div>
+            
+            
            
             
          </div>
+         
          </div>
         
         <%
@@ -159,7 +178,7 @@ request.setCharacterEncoding("UTF-8");
       
     </div>
     
-     <%if(tmp.nextPage(pageNumber,search))
+     <%if(tmp.nextSearchPage(pageNumber,search))
      {
     	 
      %>

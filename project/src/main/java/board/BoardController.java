@@ -70,17 +70,44 @@ public class BoardController {
 		
 	}
 	
-	public boolean nextPage(int pageNumber,String text)
+	public boolean nextPage(int pageNumber)
 	{
        
 		
-		String SQL = "SELECT * FROM Item WHERE itemID < ? AND itemTitle LIKE ?";
-		String input = "%"+text+"%";
+		String SQL = "SELECT * FROM Board WHERE boardID < ?";
+
 		try
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
-			pstmt.setString(2,input);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+			{
+				return true;
+				
+			}
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+	
+	public boolean nextSearchPage(int pageNumber,String text)
+	{
+       
+		
+		String SQL = "SELECT * FROM(SELECT boardID,boardTitle,boardText,boardWriter,boardDate,ROW_NUMBER() OVER(ORDER BY boardID DESC) AS RNUM FROM Board WHERE boardTitle LIKE ? ORDER BY boardID DESC)tmp WHERE RNUM > ? AND RNUM < ?";
+		String input = "%"+text+"%";
+		try
+		{
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1,input);
+			pstmt.setInt(2, pageNumber*10-10);
+			pstmt.setInt(3, pageNumber*10+1);
 			
 			rs = pstmt.executeQuery();
 			if(rs.next())
@@ -152,16 +179,15 @@ public class BoardController {
 	
 	public ArrayList<Board> getSearchBoardList(int pageNumber,String search)
 	{
-		String SQL = "SELECT * FROM Board WHERE boardID < ? AND boardTitle LIKE ? ORDER BY boardID DESC LIMIT 10";
+		String SQL = "SELECT * FROM(SELECT boardID,boardTitle,boardText,boardWriter,boardDate,ROW_NUMBER() OVER(ORDER BY boardID DESC) AS RNUM FROM Board WHERE boardTitle LIKE ? ORDER BY boardID DESC)tmp WHERE RNUM > ? AND RNUM < ?";
 		String input = "%"+search+"%";
 		ArrayList<Board> search_list = new ArrayList<Board>();
 		try
 		{
-		
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
-		
-			pstmt.setString(2,input);
+			pstmt.setString(1,input);
+			pstmt.setInt(2, pageNumber*10-10);
+			pstmt.setInt(3, pageNumber*10+1);
 			
 			
 			
