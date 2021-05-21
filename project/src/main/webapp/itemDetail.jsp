@@ -101,33 +101,42 @@ request.setCharacterEncoding("UTF-8");
     Item result = it.itemDetail(itemID);
     %>
     
-    <div id = "content_wrap">
+    <div id = "wrap">
+    <div id = "item_wrap">
        
-   
-    <div class="content_list">
+       <div id = "item_title">
+        <%=result.getItemTitle() %>
+       </div>
     
-    		   <div id = "content_image">
-            	  <%=result.getItemTitle() %>
-                  <img src="upload/<%=result.getItemImage()%>" width = "200" height = "200" alt="">
+    <div id = "item">
+    
+      <div id = "item_image">
+    		    <img src="upload/<%=result.getItemImage()%>" width = "380" height = "380" alt="">
+            	
+                 
  			  
                   </div>
       
-               </div>
+   
                
-                 <div id = "content_info">
+                 <div id = "item_info">
             	 
                 <%=result.getItemPrice() %>
                 <%=result.getItemText() %>
                 
                 </div>
     
+    </div>
+    
+    		 
     
          
             
    </div>
-     
-     
    </div>
+     
+     
+   
     
 
     <script
