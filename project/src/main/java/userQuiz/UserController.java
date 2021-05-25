@@ -34,15 +34,17 @@ public class UserController {
 	
 	public int join(User user)
 	{
-		String SQL = "INSERT INTO USER (userName,userGender,userHobby,userPhone) VALUES (?,?,?,?)";
+		String SQL = "INSERT INTO USER (id,name,snum,year,pass,email) VALUES (?,?,?,?,?,?)";
 	
 		try
 		{
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, user.getUserName());
-			pstmt.setString(2, user.getUserGender());
-			pstmt.setString(3, user.getUserHobby());
-			pstmt.setString(4, user.getUserPhone());
+			pstmt.setString(1, user.getId());
+			pstmt.setString(2, user.getName());
+			pstmt.setString(3, user.getSnum());
+			pstmt.setInt(4, user.getYear());
+			pstmt.setString(5, user.getPass());
+			pstmt.setString(6, user.getEmail());
 			return pstmt.executeUpdate();
 				
 		}
@@ -54,42 +56,7 @@ public class UserController {
 	}
 	
 	
-	
-	
-	
-	
-	public ArrayList<User> profile()
-	{
-		String SQL = "SELECT * FROM USER";
-		ArrayList<User> list = new ArrayList<User>();
 		
-		try
-		{
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next())
-			{
-				User tmp = new User();
-				tmp.setUserID(rs.getInt(1));
-				tmp.setUserName(rs.getString(2));
-				tmp.setUserGender(rs.getString(3));
-				tmp.setUserHobby(rs.getString(4));
-				tmp.setUserPhone(rs.getString(5));
-				list.add(tmp);;
-			}
-			
-			
-			
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-		return list;
-		
-	}
 	
 	
 }

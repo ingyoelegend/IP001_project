@@ -1,45 +1,59 @@
 package userQuiz;
 
+import java.util.Calendar;
+
 public class User {
 	
-	private int userID;
-	public int getUserID() {
-		return userID;
+	private String id;
+	private String name;
+	private String snum;
+	private int year;
+	private String pass;
+	private String email;
+	public String getId() {
+		return id;
 	}
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setId(String id) {
+		this.id = id;
 	}
-	private String userName;
-	private String userGender;
-	private String userHobby;
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getUserGender() {
-		return userGender;
+	public String getSnum() {
+		return snum;
 	}
-	public void setUserGender(String userGender) {
-		this.userGender = userGender;
+	public void setSnum(String snum) {
+		this.snum = snum;
 	}
-	public String getUserHobby() {
-		return userHobby;
+	public int getYear() {
+		return year;
 	}
-	public void setUserHobby(String userHobby) {
-		this.userHobby = userHobby;
+	public void setYear(int year) {
+		this.year = year;
 	}
-	public String getUserPhone() {
-		return userPhone;
+	public String getPass() {
+		return pass;
 	}
-	public void setUserPhone(String userPhone) {
-		this.userPhone = userPhone;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
-	private String userPhone;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
-	
-	
+	public int getAge() {
+		
+		Calendar current = Calendar.getInstance();
+		int currentYear = current.get(Calendar.YEAR);
+		int myyear = getYear();
+		return currentYear - myyear;
+	}
 	
 
 }
