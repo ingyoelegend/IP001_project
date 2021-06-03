@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+
+
+	
+	<select id="login" parameterType="String" resultType="String">
+		SELECT userPassword FROM USER WHERE userID = #{userID}
+	</select>
+	
+	
+	<select id="getOpCode" parameterType="String" resultType="Integer">
+		SELECT opCode FROM USER WHERE userID = #{userID}
+	</select>
+	
+	
+	<select id="getItemList" parameterType="hashMap" resultType="hashMap">
+	  SELECT * FROM(SELECT itemID,itemTitle,itemText,itemImage,itemCount,itemPrice,itemImageReal,itemCategory,ROW_NUMBER() OVER(ORDER BY itemID DESC) AS RNUM FROM Item WHERE itemCategory LIKE #{category} AND itemTitle LIKE #{search} ORDER BY itemID DESC)tmp WHERE RNUM &gt; #{a} AND RNUM &lt; #{b}
+	 </select>
+	 
+	 
+	 <select id="nextPage" parameterType="hashMap" resultType="hashMap">
+	  SELECT * FROM(SELECT itemID,itemTitle,itemText,itemImage,itemCount,itemPrice,itemImageReal,itemCategory,ROW_NUMBER() OVER(ORDER BY itemID DESC) AS RNUM FROM Item WHERE itemCategory LIKE #{category} AND itemTitle LIKE #{search} ORDER BY itemID DESC)tmp WHERE RNUM &gt; #{a} AND RNUM &lt; #{b}
+	 </select>
+
+</mapper>

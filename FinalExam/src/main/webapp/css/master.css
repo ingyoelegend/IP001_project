@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import "reset.css";
+@import "variables.css";
+
+body
+{
+
+    font-family: 'Jua', sans-serif;
+	
+	display:flex;
+    flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	min-width:1000px;
+	
+	
+}
+
+
+
+
+.uploadItem
+{
+	display:block;
+	text-decoration:none;
+	color:black;
+	
+}
+
+.page_list
+{
+	width:1000px;
+	border: 3px solid black;
+	padding:30px;
+}

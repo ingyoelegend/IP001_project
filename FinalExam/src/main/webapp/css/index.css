@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import "reset.css";
+@import "variables.css";
+
+body {
+  font-family: 'Jua', sans-serif;
+}
+
+#header_wrap
+{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	min-width: 1000px;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  width: 1000px;
+
+  
+}
+
+
+
+#logo {
+  display: flex;
+  width: 20%;
+
+  justify-content: center;
+}
+
+#dropdown {
+  display: flex;
+  width: 20%;
+  justify-content: center;
+  position: relative;
+ 
+}
+
+#dropdown-content {
+  display: none;
+
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  position: absolute;
+  top: 18px;
+  right:25%;
+}
+
+#dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 12px 16px;
+}
+
+#content_wrap
+{
+  display: block;
+  margin-top:100px;
+ 
+ align-items:center;
+  
+
+  min-width: 1000px;
+}
+
+#content
+{
+    
+	display:flex;
+	justify-content:center;
+	margin-bottom:20px;
+
+
+}
+
+#content_info
+{
+	align-items:center;
+}
+
+
+.content_list
+{
+	display:flex;
+	justify-content:space-between;
+	border-top:solid gray 2px;
+	
+	width:1000px;
+	align-items: center;
+	
+}
+
+
+#dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+
+#dropdown_icon:hover #dropdown-content{
+  display: block;
+}
+
+
+#search {
+  display: flex;
+  width: 60%;
+  justify-content: center;
+ 
+}
+
+#search_input {
+  border-radius: 50px 0px 0px 50px;
+  width: 70%;
+  height: 30px;
+  border: 3px solid skyblue;
+  padding-left: 30px;
+  padding-right: 30px;
+
+}
+
+.nav_item {
+  text-decoration: none;
+  color: black;
+  margin: 0px 20px 0px 20px;
+}
+
+.nav_item:hover {
+  text-decoration: underline;
+}
+
+#nav_list {
+  min-width: 1000px;
+  display: flex;
+  justify-content: center;
+}
+
+#submit
+{
+	cursor:pointer;
+	border-style:none;
+	border-radius: 0px 50px 50px 0px;
+	border: 3px solid skyblue;
+	background-color:white;
+	
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+}
+
+.icon
+{
+	background-color:rgba(0,0,0,0.2);
+	border-radius:50%;	
+	padding:20px;
+}
+
+.icon a
+{
+	color:black;
+	
+}
+
+#page
+{
+	position:fixed;
+	bottom:20px;
+	left:20px;
+}
+
+#content_price
+{
+	color:red;
+}
+
+
