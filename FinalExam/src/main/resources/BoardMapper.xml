@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardMapper">
+
+	
+	<select id="getBoardList" parameterType="hashMap" resultType="hashMap">
+	  SELECT * FROM(SELECT boardID,boardTitle,boardText,boardWriter,boardDate,ROW_NUMBER() OVER(ORDER BY boardID DESC) AS RNUM FROM Board WHERE boardTitle LIKE #{search} ORDER BY boardID DESC)tmp WHERE RNUM &gt; #{a} AND RNUM &lt; #{b}
+	 </select>
+	 
+	 
+	 <select id="nextPage" parameterType="hashMap" resultType="hashMap">
+	 SELECT * FROM(SELECT boardID,boardTitle,boardText,boardWriter,boardDate,ROW_NUMBER() OVER(ORDER BY boardID DESC) AS RNUM FROM Board WHERE boardTitle LIKE #{search} ORDER BY boardID DESC)tmp WHERE RNUM &gt; #{a} AND RNUM &lt; #{b}
+	 </select>
+	 
+	 
+	  <delete id="delete" parameterType="String">
+		DELETE FROM BOARD WHERE boardID = #{boardID}
+	</delete>
+
+</mapper>

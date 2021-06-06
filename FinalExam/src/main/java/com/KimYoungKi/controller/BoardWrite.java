@@ -1,7 +1,6 @@
 package com.KimYoungKi.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,53 +12,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.KimYoungKi.dao.ItemDao;
+import com.KimYoungKi.dao.BoardDao;
 import com.KimYoungKi.dao.UserDao;
-import com.KimYoungKi.model.Item;
-import com.KimYoungKi.model.User;
 
 
-@WebServlet("/Index")
-public class Index extends HttpServlet {
+@WebServlet("/BoardWrite")
+public class BoardWrite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
-	UserDao userDao = new UserDao();
-	ItemDao itemDao = new ItemDao();
+      
    
-    public Index() {
-    	
-    	
-    	
+    public BoardWrite() {
         super();
-        
-   
         
     }
 
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		   
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		
 
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+	
+		UserDao userDao = new UserDao();
+		BoardDao boardDao = new BoardDao(); 
 		
-	
-			
-	
-		 String category = request.getParameter("itemCategory");  
+		
 		 String search = request.getParameter("search");
 		 int pageNumber = 1;
 		 HttpSession session = request.getSession();
 		 
 		 
-		 
-		 if("null".equals(category) || category == null)
-		  {
-			  category = "";
-			 
-		  }
+		
 		 
 		 if("null".equals(search) || search == null)
 		  {
@@ -86,11 +70,6 @@ public class Index extends HttpServlet {
 		  
 		  
 		    String userID = (String)session.getAttribute("userID");
-		    
-		    
-		    
-		    
-		    
 			int opCode = userDao.getOpCode(userID);
 		  
 			
@@ -109,57 +88,20 @@ public class Index extends HttpServlet {
 			}
 			
 			
-			HashMap<String,String> hashmap = new HashMap<>();
-			
-			hashmap.put("pageNumber", Integer.toString(pageNumber));
-			hashmap.put("category", category);
-			hashmap.put("search", search);
-			
-		     List<?> list = itemDao.getItemList(hashmap);
-	     
-		     request.setAttribute("list", list);
-		     
-		     hashmap.clear();
-		     
-		     hashmap.put("pageNumber", Integer.toString(pageNumber+1));
-			 hashmap.put("category", category);
-			 hashmap.put("search", search);
-		     
-		     if(itemDao.nextPage(hashmap))
-		     {
-		    	 
-		    
-		    	  request.setAttribute("nextPage", "  <div class = \"icon\" id = \"page\">\r\n"
-		    	  		+ "		    <a href = \"Index?pageNumber="+(pageNumber+1)+"&search="+search+"&itemCategory="+category+"\" id = \"write_button\">다음페이지</a>\r\n"
-		    	  		+ "		    </div>");
-		    	 
-		   
-		    
-		     }
-		     else
-		     {
-		    	 request.setAttribute("nextPage", "");
-		     }
-		    
 		  
 		     
-			 RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+			 RequestDispatcher view = request.getRequestDispatcher("board_write.jsp");
 	    	 view.forward(request, response);
-		
 	}
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		
 
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-	
-		 String search = request.getParameter("itemSearch");
 		
-		 response.sendRedirect("Index?search="+search);
-		
+		 
 	}
 
 }

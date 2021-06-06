@@ -23,6 +23,9 @@ private SqlSession sqlSession;
 	public int login(@Param("userID")String userID, @Param("userPassword")String userPassword) 
 	{
 		
+		DBUtil.closeSqlSession(sqlSession);
+		sqlSession = DBUtil.getSqlSession();
+		
 		String result = sqlSession.selectOne("UserMapper.login",userID);
 		
 		
@@ -48,6 +51,9 @@ private SqlSession sqlSession;
 	public int getOpCode(@Param("userID")String userID) 
 	{
 		
+		DBUtil.closeSqlSession(sqlSession);
+		sqlSession = DBUtil.getSqlSession();
+		
 		int result = -1;
 		
 		if(userID != null)
@@ -59,70 +65,33 @@ private SqlSession sqlSession;
 	}
 
 
-	public List<?> getItemList(HashMap<String, String> hashmap) {
+	public int delete(@Param("userID")String userID) 
+	{
+		DBUtil.closeSqlSession(sqlSession);
+		sqlSession = DBUtil.getSqlSession();
+	
+		int result = -1;
 		
+		if(userID != null)
+		{
+		 result = sqlSession.delete("UserMapper.delete",userID);
+		 sqlSession.commit();
+		}
 		
-		HashMap<String, String> tmp = new HashMap<>();
+		return result;
 		
-		
-		String category = hashmap.get("category");
-		String search = hashmap.get("search");
-		
-		String newcategory = "%"+category+"%";	
-		String newsearch = "%"+search+"%";	
-		int pageNumber = Integer.parseInt(hashmap.get("pageNumber"));
-		
-		int a = pageNumber*10-10;
-		int b = pageNumber*10+1;
-		
-		tmp.put("category", newcategory);
-		tmp.put("search", newsearch);
-		tmp.put("a", Integer.toString(a));
-		tmp.put("b", Integer.toString(b));
-		
-		System.out.println(search);
-		
-		return sqlSession.selectList("UserMapper.getItemList",tmp);
-		
-		
+
 	}
 
-	public boolean nextPage(HashMap<String, String> hashmap)
+	public int changeOpCode(HashMap<String, String> hashmap)
 	{
 		
+		DBUtil.closeSqlSession(sqlSession);
+		sqlSession = DBUtil.getSqlSession();
 		
-		
-		
-		HashMap<String, String> tmp = new HashMap<>();
-		
-		
-		String category = hashmap.get("category");
-		String search = hashmap.get("search");
-		
-		String newcategory = "%"+category+"%";	
-		String newsearch = "%"+search+"%";	
-		int pageNumber = Integer.parseInt(hashmap.get("pageNumber"));
-		
-		int a = pageNumber*10-10;
-		int b = pageNumber*10+1;
-		
-		tmp.put("category", newcategory);
-		tmp.put("search", newsearch);
-		tmp.put("a", Integer.toString(a));
-		tmp.put("b", Integer.toString(b));
-		
-		
-		
-		if(sqlSession.selectList("UserMapper.nextCategoryPage",tmp).size() != 0)
-		{
-			
-			return true;
-		}
-		else
-		{
-			
-			return false;
-		}
+		int result = sqlSession.update("UserMapper.changeOpCode",hashmap);
+		sqlSession.commit();
+		return result;
 	}
 
 	

@@ -1,6 +1,7 @@
 package com.KimYoungKi.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +19,7 @@ import com.KimYoungKi.dao.UserDao;
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	UserDao userDao = new UserDao();
+	
    
     public Logout() {
         super();
@@ -28,11 +29,23 @@ public class Logout extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+
+		
+		
+		
 		 HttpSession session = request.getSession();
 		 
 		 if(session.getAttribute("userID") == null)
 		 {
-			 response.sendRedirect("Index");
+			 
+		    		 PrintWriter script = response.getWriter();
+	            	 script.println("<script>");
+	            	 script.println("alert('로그인 후에 이용할수 있습니다.')");
+	              	 script.println("location.href = 'Index'");
+	            	 script.println("</script>");
+		    		
 		 }
 		 else
 		 {
@@ -44,8 +57,11 @@ public class Logout extends HttpServlet {
 	}
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		
 		

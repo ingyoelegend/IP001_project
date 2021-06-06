@@ -1,6 +1,7 @@
 package com.KimYoungKi.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +19,7 @@ import com.KimYoungKi.dao.UserDao;
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	UserDao userDao = new UserDao();
+
    
     public Login() {
         super();
@@ -28,6 +29,10 @@ public class Login extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
 		 HttpSession session = request.getSession();
 		 
 		 if(session.getAttribute("userID") != null)
@@ -45,7 +50,11 @@ public class Login extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		UserDao userDao = new UserDao();
 		
 		String userID = request.getParameter("userID");
 		String userPassword = request.getParameter("userPassword");
@@ -55,9 +64,17 @@ public class Login extends HttpServlet {
 		
 	    if(result == 1)
 	    {
-	    	System.out.println("성공");
 	    	 session.setAttribute("userID",userID);
 	    	 response.sendRedirect("Index");
+	    }
+	    else
+	    {
+
+	    	PrintWriter script = response.getWriter();
+        	 script.println("<script>");
+        	 script.println("alert('로그인에 실패했습니다.')");
+          	 script.println("location.href = 'Login'");
+        	 script.println("</script>");
 	    }
 		
 	}
