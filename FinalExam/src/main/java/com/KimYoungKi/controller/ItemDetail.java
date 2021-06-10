@@ -74,9 +74,7 @@ public class ItemDetail extends HttpServlet {
 			 String itemID = request.getParameter("itemID");
 			 
 			 ItemModel tmp = itemDao.getItemDetail(itemID);
-			 
-			 System.out.println(tmp);
-			 
+			 			 
 			 request.setAttribute("itemDetail", tmp);
 			 
 			 RequestDispatcher view = request.getRequestDispatcher("itemDetail.jsp");

@@ -102,13 +102,10 @@ request.setCharacterEncoding("UTF-8");
           
               <div id = "content_image">
             	  <div>
-            	    <a href = ".jsp?itemID=${list.itemID}">
+            	    <a href = "Purchase?itemID=${list.itemID}">
                        구매하기
                      </a>
                        <br>
-                       <a href = ".jsp?itemID=${list.itemID}">
-                       장바구니
-                     </a>
                   </div>
       
             </div>
