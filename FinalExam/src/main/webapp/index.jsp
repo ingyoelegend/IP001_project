@@ -74,7 +74,7 @@ request.setCharacterEncoding("UTF-8");
         	
             <div id = "content_image">
             	  <div>
-            	    <a href = "itemDetail.jsp?itemID=${list.itemID}">
+            	    <a href = "ItemDetail?itemID=${list.itemID}">
                   <img src="upload/${list.itemImage}" width = "200" height = "200" alt="">
  			        </a>
                   </div>
@@ -83,10 +83,10 @@ request.setCharacterEncoding("UTF-8");
                    
                     
              <div id = "content_name">
- 			     <a href = "itemDetail.jsp?itemID=${list.itemID}">
- 			     ${list.itemTitle}
+ 			     <a href = "ItemDetail?itemID=${list.itemID}">
+ 			    상품명: ${list.itemTitle}
  			     <br>
- 			     ${list.itemID}
+ 			    상품ID: ${list.itemID}
  			    </a>
  			    <div id = "content_info">
                <div id = "content_count">

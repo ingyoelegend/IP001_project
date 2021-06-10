@@ -27,6 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT itemID FROM Item ORDER BY itemID DESC LIMIT 1
 	 </select>
 	
-	
+	 <select id="getItemDetail" parameterType="String" resultType="com.KimYoungKi.model.ItemModel">
+	 SELECT * FROM Item WHERE itemID = #{itemID}
+	 </select>
 
 </mapper>

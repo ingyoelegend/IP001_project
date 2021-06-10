@@ -23,5 +23,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 <update id="changeOpCode" parameterType="hashMap">
 		UPDATE USER SET opCode = #{opCode} WHERE userID = #{userID}
 	</update>
+	
+	 <insert id="join" parameterType="com.KimYoungKi.model.UserModel">
+		INSERT INTO USER VALUES (#{userID},#{userPassword},#{userName},#{userAddress},#{opCode})
+	</insert>
+	
 
 </mapper>

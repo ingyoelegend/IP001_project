@@ -135,6 +135,14 @@ private SqlSession sqlSession;
 		}
 		
 	}
+
+
+	public ItemModel getItemDetail(String itemID) 
+	{
+		DBUtil.closeSqlSession(sqlSession);
+		sqlSession = DBUtil.getSqlSession();
+		return sqlSession.selectOne("ItemMapper.getItemDetail",itemID);
+	}
 	
 	
 }

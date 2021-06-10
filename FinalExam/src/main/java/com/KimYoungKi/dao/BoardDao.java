@@ -154,6 +154,16 @@ private SqlSession sqlSession;
 		return result;
 		
 	}
+
+
+
+
+	public BoardModel getBoardDetail(String boardID)
+	{
+		DBUtil.closeSqlSession(sqlSession);
+		sqlSession = DBUtil.getSqlSession();
+		return sqlSession.selectOne("BoardMapper.getBoardDetail",boardID);
+	}
 	
 	
 	

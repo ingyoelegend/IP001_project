@@ -72,7 +72,7 @@ public class Index extends HttpServlet {
 			  pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		  }
 		  
-		  if(session.getAttribute("userID") == null)
+		    if(session.getAttribute("userID") == null)
 	      	{
 	      		request.setAttribute("out", "<a href = 'Login'>로그인</a><a href = 'Join'>회원가입</a>");  
 	      		     		

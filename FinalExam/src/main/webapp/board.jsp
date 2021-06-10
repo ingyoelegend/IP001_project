@@ -84,7 +84,7 @@
        
         	<div class="content_list">
             <div class = "content_list_code">
-            <a href = "boardDetail.jsp?boardID=${list.boardID}">
+            <a href = "BoardDetail?boardID=${list.boardID}">
  			${list.boardID}
  			</a>
             </div>

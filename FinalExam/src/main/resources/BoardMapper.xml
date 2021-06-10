@@ -31,5 +31,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  <insert id="boardWrite" parameterType="com.KimYoungKi.model.BoardModel">
 		INSERT INTO Board VALUES (#{boardID},#{boardTitle},#{boardText},#{boardWriter},#{boardDate})
 	</insert>
+	
+	
+	 <select id="getBoardDetail" parameterType="String" resultType="com.KimYoungKi.model.BoardModel">
+	 SELECT * FROM Board WHERE boardID = #{boardID}
+	 </select>
 
 </mapper>

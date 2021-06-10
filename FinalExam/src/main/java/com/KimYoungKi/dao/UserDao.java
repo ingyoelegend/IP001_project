@@ -94,6 +94,18 @@ private SqlSession sqlSession;
 		return result;
 	}
 
+	public int join(UserModel user)
+	{
+		DBUtil.closeSqlSession(sqlSession);
+		sqlSession = DBUtil.getSqlSession();
+		
+		int result = sqlSession.insert("UserMapper.join",user);
+		sqlSession.commit();
+		return result;
+		
+				
+	}
+
 	
 	
 	
