@@ -5,12 +5,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="ItemMapper">
 	
-	<select id="getItemList" parameterType="hashMap" resultType="hashMap">
+	<select id="getItemList" parameterType="hashMap" resultType="com.KimYoungKi.model.ItemModel">
 	  SELECT * FROM(SELECT itemID,itemTitle,itemText,itemImage,itemCount,itemPrice,itemImageReal,itemCategory,ROW_NUMBER() OVER(ORDER BY itemID DESC) AS RNUM FROM Item WHERE itemCategory LIKE #{category} AND itemTitle LIKE #{search} ORDER BY itemID DESC)tmp WHERE RNUM &gt; #{a} AND RNUM &lt; #{b}
 	 </select>
 	 
 	 
-	 <select id="nextPage" parameterType="hashMap" resultType="hashMap">
+	 <select id="nextPage" parameterType="hashMap" resultType="com.KimYoungKi.model.ItemModel">
 	  SELECT * FROM(SELECT itemID,itemTitle,itemText,itemImage,itemCount,itemPrice,itemImageReal,itemCategory,ROW_NUMBER() OVER(ORDER BY itemID DESC) AS RNUM FROM Item WHERE itemCategory LIKE #{category} AND itemTitle LIKE #{search} ORDER BY itemID DESC)tmp WHERE RNUM &gt; #{a} AND RNUM &lt; #{b}
 	 </select>
 	 
@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	
-	 <insert id="uploadItem" parameterType="hashMap">
+	 <insert id="uploadItem" parameterType="com.KimYoungKi.model.ItemModel">
 		INSERT INTO Item VALUES (#{itemID},#{itemTitle},#{itemText},#{itemImage},#{itemCount},#{itemPrice},#{itemImageReal},#{itemCategory})
 	</insert>
 	

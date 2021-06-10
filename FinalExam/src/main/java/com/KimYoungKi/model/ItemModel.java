@@ -1,6 +1,6 @@
 package com.KimYoungKi.model;
 
-public class Item {
+public class ItemModel {
 	
 	
 	private int itemID;

@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import com.KimYoungKi.DBUtil.DBUtil;
-import com.KimYoungKi.model.Item;
-import com.KimYoungKi.model.User;
+import com.KimYoungKi.model.ItemModel;
+import com.KimYoungKi.model.UserModel;
 
 public class ItemDao {
 	
@@ -21,7 +21,7 @@ private SqlSession sqlSession;
 	}
 
 
-	public List<?> getItemList(HashMap<String, String> hashmap) {
+	public List<ItemModel> getItemList(HashMap<String, String> hashmap) {
 		
 		DBUtil.closeSqlSession(sqlSession);
 		sqlSession = DBUtil.getSqlSession();
@@ -104,13 +104,13 @@ private SqlSession sqlSession;
 	}
 
 
-	public int uploadItem(HashMap<String, String> hashmap) 
+	public int uploadItem(ItemModel item) 
 	{
 		
 		DBUtil.closeSqlSession(sqlSession);
 		sqlSession = DBUtil.getSqlSession();
 		
-		int result = sqlSession.insert("ItemMapper.uploadItem",hashmap);
+		int result = sqlSession.insert("ItemMapper.uploadItem",item);
 		sqlSession.commit();	
 		
 		

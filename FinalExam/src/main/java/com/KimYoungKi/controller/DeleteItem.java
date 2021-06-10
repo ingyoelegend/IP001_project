@@ -22,7 +22,8 @@ import com.KimYoungKi.dao.UserDao;
 public class DeleteItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
-
+	UserDao userDao = new UserDao();
+	ItemDao itemDao = new ItemDao();
    
     public DeleteItem() {
         super();
@@ -36,7 +37,7 @@ public class DeleteItem extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		UserDao userDao = new UserDao();
+	
 		
 		 HttpSession session = request.getSession();
 		 int opCode = userDao.getOpCode((String)session.getAttribute("userID"));
@@ -77,7 +78,7 @@ public class DeleteItem extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		ItemDao itemDao = new ItemDao();
+		
 		
 		String itemID = request.getParameter("itemID");
 		

@@ -19,6 +19,7 @@ import javax.servlet.http.Part;
 import com.KimYoungKi.dao.BoardDao;
 import com.KimYoungKi.dao.ItemDao;
 import com.KimYoungKi.dao.UserDao;
+import com.KimYoungKi.model.ItemModel;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -27,7 +28,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class UploadItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
-	
+	UserDao userDao = new UserDao();
+	ItemDao itemDao = new ItemDao();
    
     public UploadItem() {
         super();
@@ -41,7 +43,7 @@ public class UploadItem extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		UserDao userDao = new UserDao();
+	
 		
 		 HttpSession session = request.getSession();
 		 int opCode = userDao.getOpCode((String)session.getAttribute("userID"));
@@ -76,9 +78,10 @@ public class UploadItem extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		ItemDao itemDao = new ItemDao();
+		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+	
             
             String directory = request.getSession().getServletContext().getRealPath("/upload/");
 
@@ -122,23 +125,23 @@ public class UploadItem extends HttpServlet {
             }
             else
             {
-            	HashMap<String,String> hashmap = new HashMap<>();
+            	ItemModel item = new ItemModel();
     			
-    			hashmap.put("itemImage", itemImage);
-    			hashmap.put("itemImageReal", itemImageReal);
-    			hashmap.put("itemText", itemText);
-    			hashmap.put("itemTitle", itemTitle);
-    			hashmap.put("itemPrice", itemPrice);
-    			hashmap.put("itemCount", itemCount);
-    			hashmap.put("itemCategory", itemCategory);
+    			item.setItemImage(itemImage);
+    			item.setItemImageReal(itemImageReal);
+    			item.setItemText(itemText);
+    			item.setItemTitle(itemTitle);
+    			item.setItemPrice(Integer.parseInt(itemPrice));
+    			item.setItemCount(Integer.parseInt(itemCount));
+    			item.setItemCategory(itemCategory);
     			
     			int itemID = itemDao.getNext()+1;
     			
-    			hashmap.put("itemID", Integer.toString(itemID));
+    			item.setItemID(itemID);
     			
     		
     			
-    			int result = itemDao.uploadItem(hashmap);
+    			int result = itemDao.uploadItem(item);
 
 
     			if(result == 1)

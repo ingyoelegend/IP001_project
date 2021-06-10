@@ -15,8 +15,8 @@ import javax.servlet.http.HttpSession;
 
 import com.KimYoungKi.dao.ItemDao;
 import com.KimYoungKi.dao.UserDao;
-import com.KimYoungKi.model.Item;
-import com.KimYoungKi.model.User;
+import com.KimYoungKi.model.ItemModel;
+import com.KimYoungKi.model.UserModel;
 
 
 @WebServlet("/Index")
@@ -115,7 +115,7 @@ public class Index extends HttpServlet {
 			hashmap.put("category", category);
 			hashmap.put("search", search);
 			
-		     List<?> list = itemDao.getItemList(hashmap);
+		     List<ItemModel> list = itemDao.getItemList(hashmap);
 	     
 		     request.setAttribute("list", list);
 		     

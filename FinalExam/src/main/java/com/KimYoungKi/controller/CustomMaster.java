@@ -21,7 +21,8 @@ import com.KimYoungKi.dao.UserDao;
 public class CustomMaster extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
-	
+	UserDao userDao = new UserDao();
+
    
     public CustomMaster() {
         super();
@@ -35,7 +36,7 @@ public class CustomMaster extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		UserDao userDao = new UserDao();
+	
 		
 		 HttpSession session = request.getSession();
 		 int opCode = userDao.getOpCode((String)session.getAttribute("userID"));
@@ -77,7 +78,7 @@ public class CustomMaster extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		UserDao userDao = new UserDao();
+	
 
 	 	HashMap<String,String> hashmap = new HashMap<>();
 	 	int opCode = 0;

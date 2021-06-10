@@ -20,7 +20,7 @@ import com.KimYoungKi.dao.UserDao;
 @WebServlet("/Master")
 public class Master extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-      
+	UserDao userDao = new UserDao();
 	
    
     public Master() {
@@ -35,7 +35,7 @@ public class Master extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		UserDao userDao = new UserDao();
+	
 		
 		 HttpSession session = request.getSession();
 		 int opCode = userDao.getOpCode((String)session.getAttribute("userID"));

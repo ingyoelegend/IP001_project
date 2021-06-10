@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import com.KimYoungKi.DBUtil.DBUtil;
-import com.KimYoungKi.model.Item;
-import com.KimYoungKi.model.User;
+import com.KimYoungKi.model.ItemModel;
+import com.KimYoungKi.model.UserModel;
 
 public class UserDao {
 	

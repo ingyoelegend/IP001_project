@@ -19,7 +19,7 @@ import com.KimYoungKi.dao.UserDao;
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+	UserDao userDao = new UserDao();
    
     public Login() {
         super();
@@ -54,7 +54,7 @@ public class Login extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		UserDao userDao = new UserDao();
+		
 		
 		String userID = request.getParameter("userID");
 		String userPassword = request.getParameter("userPassword");

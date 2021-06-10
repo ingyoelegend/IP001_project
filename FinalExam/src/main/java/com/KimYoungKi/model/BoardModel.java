@@ -1,6 +1,6 @@
 package com.KimYoungKi.model;
 
-public class Board {
+public class BoardModel {
 	
 	private int boardID;
 	private String boardTitle;

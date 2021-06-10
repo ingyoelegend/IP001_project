@@ -14,12 +14,14 @@ import javax.servlet.http.HttpSession;
 
 import com.KimYoungKi.dao.BoardDao;
 import com.KimYoungKi.dao.UserDao;
+import com.KimYoungKi.model.BoardModel;
 
 
 @WebServlet("/Board")
 public class Board extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-      
+	UserDao userDao = new UserDao();
+	BoardDao boardDao = new BoardDao(); 
    
     public Board() {
         super();
@@ -34,8 +36,7 @@ public class Board extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 	
-		UserDao userDao = new UserDao();
-		BoardDao boardDao = new BoardDao(); 
+	
 		
 		
 		 String search = request.getParameter("search");
@@ -94,12 +95,10 @@ public class Board extends HttpServlet {
 			
 			hashmap.put("search", search);
 			
-		     List<?> list = boardDao.getBoardList(hashmap);
+		     List<BoardModel> list = boardDao.getBoardList(hashmap);
 	     
 		     request.setAttribute("list", list);
-		     
-		     
-			     
+		     		     
 		     hashmap.clear();
 		     
 		     hashmap.put("pageNumber", Integer.toString(pageNumber+1));

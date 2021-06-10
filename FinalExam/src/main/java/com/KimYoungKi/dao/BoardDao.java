@@ -8,8 +8,9 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import com.KimYoungKi.DBUtil.DBUtil;
-import com.KimYoungKi.model.Item;
-import com.KimYoungKi.model.User;
+import com.KimYoungKi.model.BoardModel;
+import com.KimYoungKi.model.ItemModel;
+import com.KimYoungKi.model.UserModel;
 
 public class BoardDao {
 	
@@ -23,7 +24,7 @@ private SqlSession sqlSession;
 	
 
 
-	public List<?> getBoardList(HashMap<String, String> hashmap) {
+	public List<BoardModel> getBoardList(HashMap<String, String> hashmap) {
 		
 		
 		DBUtil.closeSqlSession(sqlSession);
@@ -107,6 +108,51 @@ private SqlSession sqlSession;
 		return result;
 		
 
+	}
+
+
+
+
+	public int getNext()
+	{
+		DBUtil.closeSqlSession(sqlSession);
+		sqlSession = DBUtil.getSqlSession();
+		
+		if(sqlSession.selectOne("BoardMapper.getNext") == null)
+		{
+			return 0;
+		}
+		else
+		{
+			return sqlSession.selectOne("BoardMapper.getNext");
+		}
+	}
+
+
+
+
+	public String getDate() 
+	{
+		DBUtil.closeSqlSession(sqlSession);
+		sqlSession = DBUtil.getSqlSession();
+		
+		return sqlSession.selectOne("BoardMapper.getDate");
+	}
+
+
+
+
+	public int boardWrite(BoardModel board)
+	{
+		DBUtil.closeSqlSession(sqlSession);
+		sqlSession = DBUtil.getSqlSession();
+		
+		int result = sqlSession.insert("BoardMapper.boardWrite",board);
+		sqlSession.commit();	
+		
+		
+		return result;
+		
 	}
 	
 	

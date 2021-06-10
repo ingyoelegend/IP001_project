@@ -13,18 +13,6 @@ request.setCharacterEncoding("UTF-8");
 
   <body>
   
-   <%
-   if(session.getAttribute("userID") == null)
-	{
-		 PrintWriter script = response.getWriter();
-	
-	 script.println("<script>");
-	 script.println("alert('로그인 후에 이용해주세요.')");
-	 script.println("location.href = 'login.jsp'");
-	 script.println("</script>");
-	
-	}
-  %>
   
    <div id="header_wrap">
     <div id="header">
@@ -44,20 +32,8 @@ request.setCharacterEncoding("UTF-8");
  	   
      	
       	<div id="dropdown-content">
-      	<%
-      	if(session.getAttribute("userID") == null)
-      	{
-      		out.println("<a href = 'login.jsp'>로그인</a>");
-      		out.println("<a href = 'join.jsp'>회원가입</a>");  	  
-      	}
-      	else
-      	{
-      		out.println("<a href = 'logoutController.jsp'>로그아웃</a>");
-      		out.println("<a href = 'changeProfile.jsp'>프로필 수정</a>");
-      		out.println("<a href = 'join.jsp'>회원가입</a>");  	  
-      	}
-      	
-      	%>
+     	${out}
+     
 
         </div>
      </div>
@@ -76,21 +52,7 @@ request.setCharacterEncoding("UTF-8");
         <a href="index.jsp?itemCategory=헤드폰" class="nav_item">헤드폰</a>
         <a href="index.jsp?itemCategory=모니터" class="nav_item">모니터</a>
         <a href="board.jsp" class="nav_item">게시판</a>
-         <%
-        UserController us = new UserController();
-        
-        if(us.getOpCode((String)session.getAttribute("userID")) == 1)
-        {
-        	
-        %>
-        
-        <a href="master.jsp" class="nav_item">관리자 페이지</a>
-        
-        <%
-        
-        }
-       
-        %>
+        ${opCode}
 
 
       </div>
@@ -100,7 +62,7 @@ request.setCharacterEncoding("UTF-8");
   <div id = "content_wrap">
     <div id="content">
 
-       <form id="write_form" action="board_write_Post.jsp" method="post">
+       <form id="write_form" action="BoardWrite" method="post">
       
       
        <div id="title">

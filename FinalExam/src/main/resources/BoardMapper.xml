@@ -6,12 +6,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="BoardMapper">
 
 	
-	<select id="getBoardList" parameterType="hashMap" resultType="hashMap">
+	<select id="getBoardList" parameterType="hashMap" resultType="com.KimYoungKi.model.BoardModel">
 	  SELECT * FROM(SELECT boardID,boardTitle,boardText,boardWriter,boardDate,ROW_NUMBER() OVER(ORDER BY boardID DESC) AS RNUM FROM Board WHERE boardTitle LIKE #{search} ORDER BY boardID DESC)tmp WHERE RNUM &gt; #{a} AND RNUM &lt; #{b}
 	 </select>
 	 
 	 
-	 <select id="nextPage" parameterType="hashMap" resultType="hashMap">
+	 <select id="nextPage" parameterType="hashMap" resultType="com.KimYoungKi.model.BoardModel">
 	 SELECT * FROM(SELECT boardID,boardTitle,boardText,boardWriter,boardDate,ROW_NUMBER() OVER(ORDER BY boardID DESC) AS RNUM FROM Board WHERE boardTitle LIKE #{search} ORDER BY boardID DESC)tmp WHERE RNUM &gt; #{a} AND RNUM &lt; #{b}
 	 </select>
 	 
@@ -19,5 +19,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  <delete id="delete" parameterType="String">
 		DELETE FROM BOARD WHERE boardID = #{boardID}
 	</delete>
+	
+	 <select id="getNext" resultType="Integer">
+		SELECT boardID FROM Board ORDER BY boardID DESC LIMIT 1
+	 </select>
+	 
+	  <select id="getDate" resultType="String">
+		SELECT NOW()
+	 </select>
+	 
+	  <insert id="boardWrite" parameterType="com.KimYoungKi.model.BoardModel">
+		INSERT INTO Board VALUES (#{boardID},#{boardTitle},#{boardText},#{boardWriter},#{boardDate})
+	</insert>
 
 </mapper>

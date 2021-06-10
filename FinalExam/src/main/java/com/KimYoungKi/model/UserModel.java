@@ -1,6 +1,6 @@
 package com.KimYoungKi.model;
 
-public class User {
+public class UserModel {
 	private String userID;
 	private String userPassword;
 	private String userName;
