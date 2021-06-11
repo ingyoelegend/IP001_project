@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.io.PrintWriter" %>
 <%@ page import = "java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 request.setCharacterEncoding("UTF-8");
 %>
@@ -32,7 +33,8 @@ request.setCharacterEncoding("UTF-8");
 
 
  	 <div id="dropdown">
- 	   <div id = "dropdown_icon"> <i class="far fa-user fa-lg"></i> 
+ 	 		 <div id = "dropdown_icon"><div>${profile}</div> 
+ 	    <i class="far fa-user fa-lg"></i> 
  	  
  	   
      	
@@ -74,20 +76,30 @@ request.setCharacterEncoding("UTF-8");
     
       <div id = "item_image">
     		    <img src="upload/${itemDetail.itemImage}" width = "380" height = "380" alt="">
-            	
-                 
- 			  
-                  </div>
+    		      <span>상품ID: ${itemDetail.itemID}</span>
+    		      <br>
+    		      <span>잔여 상품 개수: ${itemDetail.itemCount}</span>
+    		    
+      </div>
       
    
                
                  <div id = "item_info">
             	 
-                ${itemDetail.itemPrice}
-                ${itemDetail.itemText}
+            	 <div id = "item_price"><span>가격:${itemDetail.itemPrice}원</span> 
+            	 <c:if test = "${itemDetail.itemCount != '0'}"><a href = "Purchase?itemID=${itemDetail.itemID}">
+                       구매하기
+                     </a>
+            	  </c:if>
+            	  <c:if test = "${itemDetail.itemCount == 0}">품절
+            	  </c:if>
+            	  </div>
+            	  
+               <div id = "item_text">제품소개:${itemDetail.itemText}</div>
+              
                 
                 </div>
-    
+                 
     </div>
     
     		 

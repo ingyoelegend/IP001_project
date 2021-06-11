@@ -143,6 +143,17 @@ private SqlSession sqlSession;
 		sqlSession = DBUtil.getSqlSession();
 		return sqlSession.selectOne("ItemMapper.getItemDetail",itemID);
 	}
+
+
+	public int purchase(String itemID) 
+	{
+		DBUtil.closeSqlSession(sqlSession);
+		sqlSession = DBUtil.getSqlSession();
+		
+		int result = sqlSession.update("ItemMapper.purchase",itemID);
+		sqlSession.commit();
+		return result;
+	}
 	
 	
 }

@@ -22,6 +22,7 @@ request.setCharacterEncoding("UTF-8");
         <form id="write_form" action="DeleteBoard" method="post">
         
         <div id = "content_wrap">
+        	<span>삭제할 게시글 ID</span>
 			 <input type="text" name = "boardID" required/>
        	     <br>
        	      <div id = "write_submit_wrap"> <input type="submit" id="write_submit" value = "삭제 확인" />

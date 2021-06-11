@@ -21,13 +21,14 @@ request.setCharacterEncoding("UTF-8");
         <form id="write_form" action="CustomMaster" method="post">
         
         <div id = "content_wrap">
+        	<span>권한을 수정할 이메일 입력</span>
 			 <input type="text" name = "userID" placeholder = "이메일" required/>
        	     <br>
        	      <br>
        	      <br>
-       	     추가
+       	     관리자 권한 추가
        	     <input type="radio" name = "opCode" value = 1 />
-       	     삭제
+       	     관리자 권한 삭제
        	     <input type="radio" name = "opCode" value = 0/>
        	     <br>
        	     <br>

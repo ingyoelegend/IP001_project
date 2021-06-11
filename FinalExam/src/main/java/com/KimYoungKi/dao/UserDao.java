@@ -107,7 +107,15 @@ private SqlSession sqlSession;
 	}
 
 	
-	
+	public String getName(@Param("userID")String userID) 
+	{
+		
+		DBUtil.closeSqlSession(sqlSession);
+		sqlSession = DBUtil.getSqlSession();
+		
+		
+		return sqlSession.selectOne("UserMapper.getName",userID);
+	}
 	
 	
 }

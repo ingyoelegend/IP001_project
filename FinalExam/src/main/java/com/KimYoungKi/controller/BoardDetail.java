@@ -46,6 +46,8 @@ public class BoardDetail extends HttpServlet {
 	      	}
 	      	else
 	      	{
+	      		String profile = userDao.getName((String)session.getAttribute("userID"));
+			     request.setAttribute("profile", profile+"님 환영합니다.");
 	      		request.setAttribute("out", "<a href = 'Logout'>로그아웃</a><a href = 'Join'>회원가입</a>");
 	      		
 	      		
@@ -84,6 +86,8 @@ public class BoardDetail extends HttpServlet {
 			 BoardModel tmp = boardDao.getBoardDetail(boardID);
 			 
 			 request.setAttribute("boardDetail", tmp);
+			 
+			
 			 
 			 RequestDispatcher view = request.getRequestDispatcher("boardDetail.jsp");
 	    	 view.forward(request, response);

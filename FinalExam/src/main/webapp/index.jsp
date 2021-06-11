@@ -35,7 +35,8 @@ request.setCharacterEncoding("UTF-8");
 
 
  	 <div id="dropdown">
- 	   <div id = "dropdown_icon"> <i class="far fa-user fa-lg"></i> 
+ 	   <div id = "dropdown_icon"><div>${profile}</div> 
+ 	    <i class="far fa-user fa-lg"></i> 
  	  
  	   
      	
@@ -86,12 +87,9 @@ request.setCharacterEncoding("UTF-8");
  			     <a href = "ItemDetail?itemID=${list.itemID}">
  			    상품명: ${list.itemTitle}
  			     <br>
- 			    상품ID: ${list.itemID}
+ 			  
  			    </a>
  			    <div id = "content_info">
-               <div id = "content_count">
- 				잔여 상품 개수: ${list.itemCount}
-            	</div>
             
             	<div id = "content_price">
                  가격: 
@@ -102,10 +100,14 @@ request.setCharacterEncoding("UTF-8");
           
               <div id = "content_image">
             	  <div>
-            	    <a href = "Purchase?itemID=${list.itemID}">
+            	  <c:if test = "${list.itemCount != '0'}"><a href = "Purchase?itemID=${list.itemID}">
                        구매하기
                      </a>
-                       <br>
+            	  </c:if>
+            	  <c:if test = "${list.itemCount == 0}">품절
+            	  </c:if>
+            	  
+            	                           <br>
                   </div>
       
             </div>

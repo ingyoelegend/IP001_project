@@ -4,14 +4,14 @@
 #item_wrap
 {
 	
-	min-width:1000px;
+	width:1000px;
 }
 
 #item
 {
 	display:flex;
-	justify-content:space-between;
-	width:1000px;
+	
+	
 }
 
 #item_title
@@ -29,4 +29,42 @@
 {
 	display:flex;
 	justify-content:center;
+	min-width:1000px;
+}
+
+#item_price
+{
+	font-size:35px;
+	color:red;
+	margin-bottom:20px;
+	display:flex;
+	justify-content:space-between;
+}
+
+#item_price a
+{
+	text-decoration:none;
+	color:white;
+	background-color:gray;
+	border:3px solid black;
+	border-radius:10px;
+	padding:5px;
+	
+}
+
+#item_text
+{
+	font-size:30px;
+	width:610px;
+	word-break:break-all;
+}
+
+#item_info
+{
+	margin-left:10px;
+}
+
+#item_image span
+{
+	font-size:20px;
 }

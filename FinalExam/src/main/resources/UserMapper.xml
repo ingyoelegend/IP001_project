@@ -28,5 +28,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO USER VALUES (#{userID},#{userPassword},#{userName},#{userAddress},#{opCode})
 	</insert>
 	
+	<select id="getName" parameterType="String" resultType="String">
+		SELECT userName FROM USER WHERE userID = #{userID}
+	</select>
 
 </mapper>

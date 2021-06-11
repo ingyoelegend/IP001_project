@@ -26,8 +26,8 @@
 
 
  	 <div id="dropdown">
- 	   <div id = "dropdown_icon"> <i class="far fa-user fa-lg"></i> 
- 	  
+ 	 		 <div id = "dropdown_icon"><div>${profile}</div> 
+ 	   <i class="far fa-user fa-lg"></i> 
  	   
      	
       	<div id="dropdown-content">

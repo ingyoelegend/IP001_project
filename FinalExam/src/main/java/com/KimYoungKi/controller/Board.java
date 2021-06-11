@@ -64,6 +64,8 @@ public class Board extends HttpServlet {
 	      	}
 	      	else
 	      	{
+	      	  String profile = userDao.getName((String)session.getAttribute("userID"));
+			     request.setAttribute("profile", profile+"님 환영합니다.");
 	      		request.setAttribute("out", "<a href = 'Logout'>로그아웃</a><a href = 'Join'>회원가입</a>");
 	      		
 	      		
@@ -121,7 +123,7 @@ public class Board extends HttpServlet {
 		    	 request.setAttribute("nextPage", "");
 		     }
 		    
-		  
+		   
 		     
 			 RequestDispatcher view = request.getRequestDispatcher("board.jsp");
 	    	 view.forward(request, response);

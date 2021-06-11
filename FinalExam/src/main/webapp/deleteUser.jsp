@@ -19,6 +19,7 @@ request.setCharacterEncoding("UTF-8");
         <form id="write_form" action="DeleteUser" method="post">
         
         <div id = "content_wrap">
+        	<span>삭제할 유저 ID</span>
 			 <input type="text" name = "userID" required/>
        	     <br>
        	      <div id = "write_submit_wrap"> <input type="submit" id="write_submit" value = "삭제 확인" />
