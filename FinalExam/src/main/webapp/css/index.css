@@ -37,9 +37,11 @@ body {
   display: flex;
   width: 20%;
   justify-content: center;
+  text-align:center;
   position: relative;
  
 }
+
 
 #dropdown-content {
   display: none;
@@ -49,7 +51,7 @@ body {
   z-index: 1;
 
   position: absolute;
-  top: 18px;
+  bottom: -82px;
   right:25%;
 }
 

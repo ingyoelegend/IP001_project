@@ -36,11 +36,15 @@ request.setCharacterEncoding("UTF-8");
 
  	 <div id="dropdown">
  	   <div id = "dropdown_icon"><div>${profile}</div> 
+ 	   
+ 	   <br>
+ 	   
  	    <i class="far fa-user fa-lg"></i> 
  	  
- 	   
+ 	
      	
       	<div id="dropdown-content">
+     
       	${out}
 
         </div>
@@ -93,7 +97,7 @@ request.setCharacterEncoding("UTF-8");
             
             	<div id = "content_price">
                  가격: 
- 				${list.itemPrice}
+ 				${list.itemPrice}원
             	</div>
             </div>
             </div> 		
@@ -121,7 +125,8 @@ request.setCharacterEncoding("UTF-8");
         
         </c:forEach>
         
-        
+         
+      
         </div>
   
     ${nextPage}
