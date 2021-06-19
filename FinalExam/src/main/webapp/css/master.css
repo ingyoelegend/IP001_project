@@ -1,35 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-@import "reset.css";
-@import "variables.css";
-
 body
 {
-
-    font-family: 'Jua', sans-serif;
-	
-	display:flex;
-    flex-direction:column;
 	align-items:center;
+	display:flex;
 	justify-content:center;
-	min-width:1000px;
-	
-	
 }
 
 
-
-
-.uploadItem
-{
-	display:block;
+.upload-hidden{
+	display: inline-block;
+	padding: .5em .75em;
+	color: #999;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #337ab7;
+	border-color: #2e6da4;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
 	text-decoration:none;
-	color:black;
+	color:white;
+	width:250px;
 	
 }
 
-.page_list
-{
-	width:1000px;
-	border: 3px solid black;
-	padding:30px;
+.upload-name {
+	display: inline-block;
+	padding: .5em .75em;
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #f5f5f5;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color:black;
+  width:250px;
 }
+

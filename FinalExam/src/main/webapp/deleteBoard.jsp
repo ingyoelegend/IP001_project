@@ -12,7 +12,7 @@ request.setCharacterEncoding("UTF-8");
   <head>
     <meta name="viewport" content="width=device-width"/>
     <title>영기PC</title>
-    <link rel="stylesheet" href="css/uploadItem.css" />
+    <link rel="stylesheet" href="css/master.css" />
   </head>
 
   <body>
@@ -22,7 +22,8 @@ request.setCharacterEncoding("UTF-8");
         <form id="write_form" action="DeleteBoard" method="post">
         
         <div id = "content_wrap">
-        	<span>삭제할 게시글 ID</span>
+        	<span class="upload-hidden">삭제할 게시글 ID</span>
+        	  <br>
 			 <input type="text" name = "boardID" required/>
        	     <br>
        	      <div id = "write_submit_wrap"> <input type="submit" id="write_submit" value = "삭제 확인" />

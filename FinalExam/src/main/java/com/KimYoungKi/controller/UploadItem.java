@@ -100,7 +100,7 @@ public class UploadItem extends HttpServlet {
             String itemCount = multipartRequest.getParameter("itemCount");
             String itemCategory = multipartRequest.getParameter("itemCategory");
            
-            if(itemText == null || itemTitle == null ||itemCount.equals("") || itemPrice.equals("")  || itemImage == null )
+            if(itemText == null || itemTitle == null ||itemCount.equals("") || itemPrice.equals("")  || itemImage == null || itemCategory == null || itemImage == null)
             {
             	File file = new File(directory+itemImageReal);
             	file.delete();

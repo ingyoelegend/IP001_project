@@ -29,6 +29,7 @@ request.setCharacterEncoding("UTF-8");
 
  	 <div id="dropdown">
  	 		 <div id = "dropdown_icon"><div>${profile}</div> 
+ 	 		  <br>
  	  <i class="far fa-user fa-lg"></i> 
  	  
  	   

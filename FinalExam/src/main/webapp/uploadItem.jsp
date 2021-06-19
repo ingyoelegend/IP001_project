@@ -8,7 +8,7 @@ request.setCharacterEncoding("UTF-8");
   <head>
     <meta name="viewport" content="width=device-width"/>
     <title>영기PC</title>
-    <link rel="stylesheet" href="css/uploadItem.css" />
+    <link rel="stylesheet" href="css/master.css" />
   </head>
 
   <body>
@@ -19,7 +19,7 @@ request.setCharacterEncoding("UTF-8");
                    <div id = "content_wrap">
     <div id="content">
          <div id="image">
-           <span>상품 이미지</span>
+           <span class="upload-hidden">상품 이미지</span>
 
        <br>
        	    <input type="file" name = "itemImage" accept = "image/*" required/>
@@ -28,16 +28,20 @@ request.setCharacterEncoding("UTF-8");
        </div>
        
        <div id="category">
-      <span>카테고리</span>
+      <span class="upload-hidden">카테고리</span>
        <br>
        키보드
         <input type = "radio"  name = "itemCategory" value = "키보드"></input>
+         <br>
        마우스
         <input type = "radio"  name = "itemCategory" value = "마우스"></input>
+         <br>
        케이스
         <input type = "radio"  name = "itemCategory" value = "케이스"></input>
+         <br>
        헤드폰
         <input type = "radio"  name = "itemCategory" value = "헤드폰"></input>
+         <br>
        모니터
         <input type = "radio"  name = "itemCategory" value = "모니터"></input>
        	   <br>
@@ -49,7 +53,7 @@ request.setCharacterEncoding("UTF-8");
       </div>
       
        <div id="title">
-           <span>상품명</span>
+           <span class="upload-hidden">상품명</span>
        <br>
  
        	    <input type="text" placeholder = "상품명."  maxlength = "40" name = "itemTitle" required/>
@@ -61,7 +65,7 @@ request.setCharacterEncoding("UTF-8");
        	 
    
       <div id="text">
-      <span>소개글</span>
+      <span class="upload-hidden">소개글</span>
   
        	            <br>
        <br>
@@ -73,7 +77,7 @@ request.setCharacterEncoding("UTF-8");
       </div>
         <br>
          <div id="count">
-           <span>상품 개수</span>
+           <span class="upload-hidden">상품 개수</span>
    <br>
 
        	    <input type="number" placeholder = "상품개수" name = "itemCount" required/>
@@ -82,7 +86,7 @@ request.setCharacterEncoding("UTF-8");
        </div>
        
           <div id="title">
-           <span>상품 가격</span>
+           <span class="upload-hidden">상품 가격</span>
  
  <br>
        	    <input type="number" placeholder = "화폐 단위는(원)입니다" name = "itemPrice" required />

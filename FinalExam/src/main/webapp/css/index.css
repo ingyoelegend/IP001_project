@@ -52,7 +52,7 @@ body {
 
   position: absolute;
   bottom: -82px;
-  right:25%;
+  right:30%;
 }
 
 #dropdown-content a {
@@ -175,6 +175,8 @@ body {
 	bottom:20px;
 	left:20px;
 }
+
+
 
 #content_price
 {
