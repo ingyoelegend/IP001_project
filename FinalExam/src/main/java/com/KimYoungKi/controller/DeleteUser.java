@@ -91,7 +91,11 @@ public class DeleteUser extends HttpServlet {
 			else
 			{
 				System.out.println("실패");
-				 response.sendRedirect("DeleteUser");
+				 PrintWriter script = response.getWriter();
+	        	 script.println("<script>");
+	        	 script.println("alert('해당 ID를 가진 계정이 존재 하지 않습니다.')");
+	          	 script.println("location.href = 'DeleteUser'");
+	        	 script.println("</script>");
 			}
 			
 	}

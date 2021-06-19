@@ -123,6 +123,17 @@ public class UploadItem extends HttpServlet {
                	 script.println("location.href = 'UploadItem'");
              	 script.println("</script>");
             }
+            else if(Integer.parseInt(itemCount) < 0 || Integer.parseInt(itemPrice) < 0)
+            {
+            	File file = new File(directory+itemImageReal);
+            	file.delete();
+            	
+            	 PrintWriter script = response.getWriter();
+             	 script.println("<script>");
+             	 script.println("alert('상품의 가격과 개수는 음수일 수 없습니다.')");
+               	 script.println("location.href = 'UploadItem'");
+             	 script.println("</script>");
+            }
             else
             {
             	ItemModel item = new ItemModel();

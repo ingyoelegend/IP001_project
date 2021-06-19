@@ -53,12 +53,12 @@ request.setCharacterEncoding("UTF-8");
 </div>
     <div id="nav">
       <div id="nav_list">
-        <a href="index.jsp?itemCategory=키보드" class="nav_item">키보드</a>
-        <a href="index.jsp?itemCategory=마우스" class="nav_item">마우스</a>
-        <a href="index.jsp?itemCategory=케이스" class="nav_item">케이스</a>
-        <a href="index.jsp?itemCategory=헤드폰" class="nav_item">헤드폰</a>
-        <a href="index.jsp?itemCategory=모니터" class="nav_item">모니터</a>
-        <a href="board.jsp" class="nav_item">게시판</a>
+         <a href="Index?itemCategory=키보드" class="nav_item">키보드</a>
+        <a href="Index?itemCategory=마우스" class="nav_item">마우스</a>
+        <a href="Index?itemCategory=케이스" class="nav_item">케이스</a>
+        <a href="Index?itemCategory=헤드폰" class="nav_item">헤드폰</a>
+        <a href="Index?itemCategory=모니터" class="nav_item">모니터</a>
+        <a href="Board" class="nav_item">게시판</a>
          ${opCode}
       
      
@@ -88,11 +88,11 @@ request.setCharacterEncoding("UTF-8");
                  <div id = "item_info">
             	 
             	 <div id = "item_price"><span>가격:${itemDetail.itemPrice}원</span> 
-            	 <c:if test = "${itemDetail.itemCount != '0'}"><a href = "Purchase?itemID=${itemDetail.itemID}">
+            	 <c:if test = "${itemDetail.itemCount != 0}"><a href = "Purchase?itemID=${itemDetail.itemID}">
                        구매하기
                      </a>
             	  </c:if>
-            	  <c:if test = "${itemDetail.itemCount == 0}">품절
+            	  <c:if test = "${itemDetail.itemCount <= 0}">품절
             	  </c:if>
             	  </div>
             	  

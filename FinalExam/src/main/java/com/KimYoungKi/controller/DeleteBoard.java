@@ -95,7 +95,11 @@ public class DeleteBoard extends HttpServlet {
 			else
 			{
 				System.out.println("실패");
-				 response.sendRedirect("DeleteBoard");
+				PrintWriter script = response.getWriter();
+	        	 script.println("<script>");
+	        	 script.println("alert('해당 ID를 가진 게시글이 존재 하지 않습니다.')");
+	          	 script.println("location.href = 'DeleteBoard'");
+	        	 script.println("</script>");
 			}
 			
 	}

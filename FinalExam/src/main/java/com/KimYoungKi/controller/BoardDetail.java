@@ -75,7 +75,7 @@ public class BoardDetail extends HttpServlet {
     		 PrintWriter script = response.getWriter();
     		 script.println("<script>");
     		 script.println("alert('로그인 후에 이용할수 있습니다.')");
-    		 script.println("location.href = 'Index'");
+    		 script.println("location.href = 'Login'");
     		 script.println("</script>");
     		
     	}

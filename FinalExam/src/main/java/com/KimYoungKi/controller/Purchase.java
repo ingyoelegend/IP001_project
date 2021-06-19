@@ -57,6 +57,7 @@ public class Purchase extends HttpServlet {
 	        	
 	        	if(result == 1)
 	        	{
+	        		
 	        		 PrintWriter script = response.getWriter();
 		    		 script.println("<script>");
 		    		 script.println("alert('구매를 성공했습니다.')");

@@ -104,11 +104,11 @@ request.setCharacterEncoding("UTF-8");
           
               <div id = "content_image">
             	  <div>
-            	  <c:if test = "${list.itemCount != '0'}"><a href = "Purchase?itemID=${list.itemID}">
+            	  <c:if test = "${list.itemCount != 0}"><a href = "Purchase?itemID=${list.itemID}">
                        구매하기
                      </a>
             	  </c:if>
-            	  <c:if test = "${list.itemCount == 0}">품절
+            	  <c:if test = "${list.itemCount <= 0}">품절
             	  </c:if>
             	  
             	                           <br>

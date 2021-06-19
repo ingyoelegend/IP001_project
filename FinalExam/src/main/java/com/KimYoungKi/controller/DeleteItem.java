@@ -94,7 +94,12 @@ public class DeleteItem extends HttpServlet {
 		else
 		{
 			System.out.println("실패");
-			 response.sendRedirect("DeleteItem");
+			PrintWriter script = response.getWriter();
+        	 script.println("<script>");
+        	 script.println("alert('해당 ID를 가진 상품이 존재 하지 않습니다.')");
+          	 script.println("location.href = 'DeleteItem'");
+        	 script.println("</script>");
+			
 		}
 	}
 

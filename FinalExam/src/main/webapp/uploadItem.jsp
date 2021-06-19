@@ -31,7 +31,7 @@ request.setCharacterEncoding("UTF-8");
       <span class="upload-hidden">카테고리</span>
        <br>
        키보드
-        <input type = "radio"  name = "itemCategory" value = "키보드"></input>
+        <input type = "radio"  name = "itemCategory" value = "키보드" required></input>
          <br>
        마우스
         <input type = "radio"  name = "itemCategory" value = "마우스"></input>
@@ -80,7 +80,7 @@ request.setCharacterEncoding("UTF-8");
            <span class="upload-hidden">상품 개수</span>
    <br>
 
-       	    <input type="number" placeholder = "상품개수" name = "itemCount" required/>
+       	    <input type="number" placeholder = "상품개수" id = "itemCount" name = "itemCount" required/>
        	     <br>
        	      <br>
        </div>
@@ -89,7 +89,7 @@ request.setCharacterEncoding("UTF-8");
            <span class="upload-hidden">상품 가격</span>
  
  <br>
-       	    <input type="number" placeholder = "화폐 단위는(원)입니다" name = "itemPrice" required />
+       	    <input type="number" placeholder = "화폐 단위는(원)입니다" id = "itemPrice" name = "itemPrice" required />
        	    <br>
        	      <br>
        	    <div id = "write_submit_wrap"> <input type="submit" id="write_submit" value = "상품 등록" />
@@ -114,6 +114,8 @@ request.setCharacterEncoding("UTF-8");
       src="https://kit.fontawesome.com/d19eaaab15.js"
       crossorigin="anonymous"
     ></script>
+    
+    
 
   </body>
 </html>

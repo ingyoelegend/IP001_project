@@ -30,10 +30,10 @@ request.setCharacterEncoding("UTF-8");
        	      <span class="upload-hidden">권한 선택</span>
        	      <br>
        	     관리자 권한 추가
-       	     <input type="radio" name = "opCode" value = 1 />
+       	     <input type="radio" name = "opCode" value = 1 required />
        	      <br>
        	     관리자 권한 삭제
-       	     <input type="radio" name = "opCode" value = 0/>
+       	     <input type="radio" name = "opCode" value = 0 />
        	     <br>
        	     <br>
        	     

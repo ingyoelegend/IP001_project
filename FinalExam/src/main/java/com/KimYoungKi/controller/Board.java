@@ -112,7 +112,7 @@ public class Board extends HttpServlet {
 		    	 
 		    
 		    	  request.setAttribute("nextPage", "  <div class = \"icon\" id = \"page\">\r\n"
-		    	  		+ "		    <a href = \"Board?pageNumber="+(pageNumber+1)+"&search="+search+"\" id = \"write_button\">다음페이지</a>\r\n"
+		    	  		+ "		    <a href = \"Board?pageNumber="+(pageNumber+1)+"&search="+search+"\" id = \"write_button\"><i class=\"fas fa-arrow-right fa-5x\"></i></a>\r\n"
 		    	  		+ "		    </div>");
 		    	 
 		   

@@ -20,7 +20,7 @@
       <input type="email" placeholder="이메일" id = "id" name = "userID" required/>
       <input type="password" placeholder="비밀번호" id = "pwd" name = "userPassword" required/>
       <input type="submit" value="로그인" />
-      <a href="join.jsp">회원가입</a>
+      <a href="Join">회원가입</a>
     </form>
 
     <script
